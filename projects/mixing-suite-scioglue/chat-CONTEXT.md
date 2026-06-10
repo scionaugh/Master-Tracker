@@ -33,4 +33,4 @@ A unified four-topology compressor plugin covering Optical (LA-2A), VCA (SSL G-B
 ## Open Questions
 - Browser prototype not yet built — no topology has been validated by ear
 - Calibration targets in SICompressor.md are starting points only, require listening validation
-- Variable-Mu tube model: which tube parameters are used for the gain reduction element? Not specified in SICompressor.md
+- Variable-Mu tube model: implemented as a custom muSat(x, grDb) function — not a named Koren model. The Fairchild 670 gain element doesn't map cleanly to the standard Koren triode/pentode parameter set, so a custom saturation curve was used instead.

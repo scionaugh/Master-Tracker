@@ -1,55 +1,58 @@
 # ScioSpace — Code Context
-<!-- ⚠️ CONTEXT UPDATE NEEDED — Code has progressed to beta v2 with stochastic noise + UI updates. Context written before JUCE implementation was underway. -->
 
 ## Architecture Overview
 
 ```
 Plugins/ScionaughSpatialiser/Source/
-├── PluginProcessor.h/cpp   ← DSP: M/S encode/decode, side-chain processing, noise injection
-└── PluginEditor.h/cpp      ← UI: XY pad, vectorscope, correlation meter, knobs
+├── PluginProcessor.h/cpp   ← M/S engine, allpass chain, HRTF, noise, pan, vectorscope
+└── PluginEditor.h/cpp      ← XY pad, vectorscope, correlation meter, knobs
 ```
 
-Browser prototype: `Research/BST-Spatializer/bst_minimal.html` (Phase 1 built, noise calibration bug outstanding)
-Research doc: `Research/BST-Spatializer/RESEARCH.md`
-UI spec: `UI_Design_V1.md` (Plugin 3 — Spatialiser section)
-SI spec: NOT YET WRITTEN
+## Current Implementation (beta v2)
 
-## Key Technical Decisions
+**Signal path (per the header comment):**
+```
+L/R → M/S encode → side: lowshelf + peaking + 4× allpass → depth blend
+      → wideness HPF delta → M/S decode → constant-power pan → output
+Mid: optional HRTF notch (5–10.5 kHz) + 13 kHz presence peak
+```
 
-**Signal flow (per sample):**
-1. M/S encode: `M = 0.5*(L+R)`, `S = 0.5*(L-R)`
-2. Mid passes through untouched
-3. Side processing chain:
-   - Low shelf biquad ~45 Hz (gain polarity controlled by body position)
-   - Peaking biquad ~100 Hz (gain polarity controlled by body position)
-   - Allpass biquad ~60 Hz (phase rotation, planned upgrade: 3–4 cascaded stages)
-   - Broadband noise at ~−59.4 dB signal-relative (current prototype uses absolute gain — bug)
-4. M/S decode: `L = M+S`, `R = M−S`
+**Key implementation details:**
 
-**FIR crossovers required for side-channel high-pass** (not IIR) — IIR introduces frequency-dependent phase shifts causing image smearing. Confirmed by research paper.
+**4 cascaded allpass stages** at 40, 80, 140, 200 Hz (the research doc's recommendation of 3-4 stages is implemented as exactly 4). One-pole IIR allpass: `y[n] = -c*x[n] + x[n-1] + c*y[n-1]`.
 
-**APVTS parameter IDs:** `pan`, `elevation`, `wideness`, `hrtf`, `noise`, `depth`
+**HRTF is implemented (Phase 2 is built):** `midNotch` + `midPresence` filters on the mid channel. 5–10.5 kHz notch + 13 kHz presence peak. The research doc treated this as a future phase — it's in beta v2.
 
-**UI components (from UI_Design_V1.md):**
-- `XYPadComponent` — X = Pan (−100 to +100), Y = Body Position (−90° to +90°). Puck width scales with `wideness`. Mouse drag updates pan + elevation in real time.
-- `VectorscopeComponent` — Lissajous display, persistence tail, 30Hz timer from lockfree circular buffer
-- `CorrelationMeterComponent` — horizontal bar −1 to +1, green positive / red negative
-- Three `KnobWithLabel`: HRTF Amount, Side Decorrelation Noise, Effect Depth
+**Sub-bass locking:** Wideness HPF at ~110 Hz keeps sub-bass mono centre. One-pole high-pass on side channel.
 
-**Threading:** DSP thread writes L/R samples to `juce::AbstractFifo`-backed circular buffer. UI timer at 30Hz reads for vectorscope. Correlation coefficient computed on DSP thread, written to atomic, read by UI.
+**Decorrelation noise:** Pre-generated ring buffer (65536 samples). Signal-relative amplitude set per-block from input RMS — the calibration bug from the browser prototype is fixed.
 
-## Dependencies on Other Projects
-- `Shared/ScionaughLookAndFeel.h/cpp` — all UI styling
+**Noise is NOT SI-system noise** — the instanceSeed is serialised for suite consistency but the header notes "no stochastic injection." The decorrelation noise is the SR component from the BST architecture, handled separately from the Aliveness system.
+
+**Pan smoothing:** τ ≈ 20ms one-sample smoothing for pan gains — avoids zipper noise on XY pad drag.
+
+**Vectorscope:** SPSC ring buffer (2048 samples) of scopeL/R. `correlationValue` atomic updated per block by DSP thread.
+
+**Parameters (APVTS IDs):** `pan`, `elevation`, `wideness`, `hrtf`, `noise`, `depth`
+
+**5 factory presets.**
+
+**State serialisation:** APVTS state + instanceSeed + telemetry.
+
+## Key Divergences from Design Doc / Research
+- HRTF Phase 2 already implemented (was planned as future work)
+- Allpass network: exactly 4 stages at fixed frequencies (40/80/140/200 Hz) rather than a variable/sliding network
+- No Velvet Noise Decorrelator — still using pre-generated broadband noise ring buffer
+- Noise calibration bug from browser prototype (absolute gain) is fixed — now signal-relative
+
+## Dependencies
+- `Shared/StochasticEngine.h` (instanceSeed only — no SI injection)
+- `Shared/ScionaughLookAndFeel.h/cpp`
+- `Shared/ScionaughTelemetry.h/cpp`
 - `Research/BST-Spatializer/RESEARCH.md` — architecture reference
-- CIPIC HRTF Database — Phase 2 notch calibration
-
-## Known Issues / Technical Debt
-- **Noise calibration bug in prototype:** side-channel noise is absolute gain, must be signal-relative to stay below masking threshold at all input levels
-- Single allpass biquad insufficient — needs 3–4 cascaded stages (confirmed by research doc)
-- No Velvet Noise Decorrelator yet (planned replacement for Gaussian noise)
-- No SI specification document written for this plugin
 
 ## Open Questions
-- VND implementation: browser prototype first or JUCE direct?
-- Phase 2 HRTF notch: CIPIC empirical data vs parametric model?
-- SI spec needed — noise in ScioSpace serves a different role (stochastic resonance for spatial cues) than in the saturation/compression plugins
+- Testing outcomes from beta v2 pending
+- VND (Velvet Noise Decorrelator) upgrade: still worth implementing for CPU efficiency? (current ring-buffer approach works but VND would be ~76% fewer CPU ops)
+- HRTF notch frequency mapping: parametric model used — does the midNotch coefficient sweep match the 4.7–11 kHz position-dependent table from the research doc?
+- Mono-compatibility: has the FFT null test (<0.7 dB ripple) been validated in beta v2?

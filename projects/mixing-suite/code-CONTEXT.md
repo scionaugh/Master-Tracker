@@ -1,59 +1,51 @@
 # Mixing Suite — Code Context
-<!-- ⚠️ CONTEXT UPDATE NEEDED — Code has progressed to beta v2 with stochastic noise + UI updates. Context written before JUCE implementation was underway. -->
 
 ## Architecture Overview
 
-Four separate JUCE plugins sharing a common infrastructure layer:
+Four JUCE VST3/AU plugins sharing a common Shared/ infrastructure layer. All at beta v2.
 
 ```
-Mixing Suite/
-├── Plugins/
-│   ├── Shared/                        ← suite-wide shared code
-│   │   ├── ScionaughLookAndFeel.h/cpp  ← common UI skin
-│   │   ├── HarmonicAnalyzer.h/cpp      ← FFT-based harmonic analysis
-│   │   ├── ScionaughTelemetry.h/cpp    ← telemetry/analytics
-│   │   ├── ScionaughVersion.h          ← version constants
-│   │   ├── ScionaughVersionChecker.h   ← update checking
-│   │   ├── StochasticEngine.h          ← SI noise system
-│   │   └── Fonts/                      ← Cinzel + Special Elite as BinaryData
-│   ├── ScionaughTube/Source/           ← Sciotube JUCE plugin
-│   ├── ScionaughTape/Source/           ← Sciotape JUCE plugin
-│   ├── ScionaughSpatialiser/Source/    ← ScioSpace JUCE plugin
-│   └── ScionaughCompressor/Source/     ← ScioGlue JUCE plugin
-├── Prototypes/
-│   ├── Tube/thermionic_saturator.html  ← complete browser prototype
-│   ├── Tape/                           ← design doc complete, prototype not yet built
-│   └── Compressor/Mix Compressor Project/ ← compressor prototype
-└── Research/
-    └── BST-Spatializer/                ← spatialiser research
+Plugins/
+├── Shared/
+│   ├── StochasticEngine.h         ← SI noise system (3 generator types + aliveness curve)
+│   ├── HarmonicAnalyzer.h/cpp     ← FFT-based H2–H8 analysis (Sciotube + Sciotape)
+│   ├── ScionaughLookAndFeel.h/cpp ← common UI skin
+│   ├── ScionaughTelemetry.h/cpp   ← telemetry (consent granted at sign-up)
+│   ├── ScionaughVersion.h
+│   ├── ScionaughVersionChecker.h
+│   └── Fonts/
+├── ScionaughTube/Source/
+├── ScionaughTape/Source/
+├── ScionaughCompressor/Source/
+└── ScionaughSpatialiser/Source/
 ```
 
 ## Key Technical Decisions
 
-**Shared LookAndFeel (`ScionaughLookAndFeel`):** All four plugins use a single LookAndFeel class. Brass/amber dark aesthetic. Custom `drawRotarySlider()`, `drawLinearSlider()`, `drawButtonBackground()`, `drawComboBox()`. Fonts (Cinzel 700 for titles, Special Elite for labels) loaded as BinaryData via `juce::Typeface::createSystemTypefaceFor()`.
+**StochasticEngine.h — three generator types, all in `namespace si`:**
+- `WhiteNoise` — xorshift64* PRNG, flat spectrum
+- `BandlimitedWhiteNoise` — two cascaded one-pole lowpasses, configurable cutoff
+- `PinkNoise` — Voss-McCartney 16-row algorithm (FET flicker noise)
+- Aliveness curve: `drive = (knob/10)^0.4` — compresses useful range into lower travel
+- True stereo: L seed = instanceSeed, R seed = ~instanceSeed (bitwise NOT)
+- Hard CPU gate: Aliveness == 0 skips all noise arithmetic entirely
 
-**Threading model (all plugins):** DSP thread writes to `std::atomic<float>` arrays and `juce::AbstractFifo`-backed circular buffers. UI timer at 30Hz reads and calls `repaint()`. `paint()` never accesses DSP state directly.
+**Oversampling:** All four plugins use `juce::dsp::Oversampling` with equiripple FIR, user-selectable Off / 2x / 4x. Two objects pre-built per plugin so switching never allocates on audio thread.
 
-**APVTS bindings:** All parameters use bare IDs (no prefixes) registered in each processor's `createParameterLayout()`. Bound via `SliderAttachment`, `ButtonAttachment`, `ComboBoxAttachment`.
+**Threading model:** DSP thread writes to `std::atomic<float>` and ring buffers. UI timer at 30Hz reads and repaints. `paint()` never touches DSP state directly.
 
-**Scalable windows:** All editors implement `resized()` with proportional layout. No hardcoded pixel positions. `setResizeLimits()` enforces minimum sizes per plugin.
+**Telemetry:** Consent set to granted at construction — users consent at sign-up on sciosound.com before downloading beta.
 
-**Stochastic Injection (SI) system:** `StochasticEngine.h` in Shared. Signal-dependent noise — zero at silence, scales with signal level. Each plugin has a dedicated SI spec doc (SITube.md, SITape.md, SICompressor.md).
-
-**HarmonicAnalyzer:** Shared FFT-based harmonic analysis, used for Sciotube's H2–H8 display and potentially other plugins.
-
-## UI Design Reference
-Full spec in `UI_Design_V1.md`. Colour palette, typography, knob/button/meter specs, and per-plugin layouts all defined there. This is the authoritative visual reference for all JUCE editor work.
+**instanceSeed:** Generated at construction, serialised in plugin state. Phase 10 milestone.
 
 ## Dependencies on Other Projects
-None — self-contained suite.
+- sciosound.com (LMS): consent and download flow
+- scionaugh.com (website): plugin marketing pages
 
 ## Known Issues / Technical Debt
-- Sciotape browser prototype not yet built (design doc is ready)
-- 12AX7 parameter version unresolved (1996 vs 1997 Koren) — blocker for Sciotube JUCE finalisation
-- Tube switching in early prototype caused AudioWorklet rebuild — resolved in browser prototype via per-sample parameter reading; JUCE uses AudioParams
+- instanceSeed Phase 10: serialisation implemented in Sciotube and Sciotape; verify all four plugins have it
+- Phase 10 also noted for compressor and spatialiser
 
 ## Open Questions
-- Which 5 of 11 tube models ship in Sciotube v1? Requires listening validation.
-- Is 4x oversampling sufficient for all Sciotube models or does KT88/6C33C require 8x?
-- Oversampling: make user-selectable (Off/2x/4x) when project rate ≥ 88.2 kHz?
+- Testing outcomes from beta v2 not yet documented
+- Which plugins still need Phase 10 instanceSeed serialisation verified?

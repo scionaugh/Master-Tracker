@@ -1,64 +1,68 @@
 # ScioGlue — Code Context
-<!-- ⚠️ CONTEXT UPDATE NEEDED — Code has progressed to beta v2 with stochastic noise + UI updates. Context written before JUCE implementation was underway. -->
 
 ## Architecture Overview
 
 ```
 Plugins/ScionaughCompressor/Source/
-├── PluginProcessor.h/cpp   ← DSP: four topology engines, SI injection, GR metering
-└── PluginEditor.h/cpp      ← UI: model tabs, swappable panels, GR trace, meters
+├── PluginProcessor.h/cpp   ← Four topology engines, SI, GR metering, BPM sync, presets
+└── PluginEditor.h/cpp      ← Model tabs, swappable panels, GR trace, meters
 ```
 
-SI spec: `SICompressor.md`
-UI spec: `UI_Design_V1.md` (Plugin 4 — Compressor section)
-Browser prototype: NOT YET BUILT
+## Current Implementation (beta v2)
 
-## Key Technical Decisions
+**Four topology engines, each a separate method:**
+- `processOptical()` — LA-2A: EL panel + CdS photoresistor model, cell speed (Fast/Classic/Slow)
+- `processVCA()` — SSL G-Bus: CV-based gain reduction, programme-dependent auto release
+- `processFET()` — 1176: feedback topology, input drive, ratio creep accumulator
+- `processVariMu()` — Fairchild 670: tube transconductance model with `muSat()` nonlinearity
 
-**APVTS parameter IDs:**
-- Global: `model`, `auto_gain`
-- Optical: `opt_threshold`, `opt_attack`, `opt_cell_speed`, `opt_mode`, `opt_gain`
-- VCA: `vca_threshold`, `vca_attack`, `vca_release`, `vca_ratio`, `vca_gain`
-- FET: `fet_input`, `fet_attack`, `fet_release`, `fet_ratio`, `fet_gain`
-- Variable-Mu: `vm_threshold`, `vm_tc`, `vm_gain`
+**Variable-Mu tube saturation:** `muSat(x, grDb)` — static nonlinearity on the gain reduction element. The Variable-Mu tube question from the design docs (which tube?) is answered in the code — a custom `muSat()` function rather than a named Koren model, reflecting the Fairchild's distinct tube topology.
 
-**Stochastic Injection per topology (from SICompressor.md):**
+**Oversampling:** Off / 2x / 4x. Applied to the WHOLE engine (detector + gain + saturation), not just the nonlinearity — ensures attack/release ballistics stay wall-clock accurate at all OS settings.
 
-| Topology | Mechanism | Injection Point | Noise Type |
-|----------|-----------|-----------------|------------|
-| Optical | CdS carrier noise | GR coefficient before application | Bandlimited white, ~5 kHz rolloff |
-| VCA | CV path Johnson noise | Control voltage before VCA | Bandlimited white, ~12 kHz rolloff |
-| FET | 1/f flicker noise | Signal at FET stage | Pink (1/f), use Voss-McCartney |
-| Variable-Mu | Grid noise + IP shot | EG before transconductance; IP multiplicative | White bandlimited + white |
+**Fairchild 670 TC table:**
+| TC | Attack | Release | Auto |
+|----|--------|---------|------|
+| TC1 | 0.2ms | 0.3s | No |
+| TC2 | 0.2ms | 0.8s | No |
+| TC3 | 0.4ms | 2.0s | No |
+| TC4 | 0.4ms | 5.0s | No |
+| TC5 | 0.4ms | 0.2s | Yes |
+| TC6 | 0.2ms | 0.3s | Yes |
 
-All injections zero at zero compression. Scaling forms:
-- Optical: `GR_perturbed = GR_dB + noise * drive * |GR_dB|`
-- VCA: `noise_amplitude = drive * ceiling * |CV_current|`
-- FET: `noise_amplitude = drive * ceiling * |signal_at_FET| * GR_depth_factor`
-- Var-Mu grid: `drive * ceiling_grid * |signal| * GR_depth_factor`
-- Var-Mu shot: `IP_out = IP * (1 + noise * drive * sqrt(|IP_GR|) * GR_depth_factor)`
+**Optical cell-speed table:**
+| Speed | Fast Rel | Slow Rel | Atk Scale |
+|-------|----------|----------|-----------|
+| Fast | 30ms | 0.40s | 0.7x |
+| Classic | 60ms | 1.20s | 1.0x |
+| Slow | 90ms | 3.50s | 1.5x |
 
-**UI components (from UI_Design_V1.md):**
-- `ModelTabComponent` — 4 tabs (Optical/LA-2A, VCA/G-Bus, FET/1176, Var-Mu/Fairchild)
-- Swappable panels: `OpticalPanelComponent`, `VCAPanelComponent`, `FETPanelComponent`, `VariMuPanelComponent`
-- `VariMuPanelComponent` includes live ratio curve with operating point dot
-- `GRTraceComponent` — scrolling GR history, newest right, AmberGlow line
-- `LevelMeterComponent` × 2 (IN, OUT)
-- `juce::ToggleButton` — Auto Gain
+**Stochastic Injection — all five generators active:**
+- opticalNoise[2]: `BandlimitedWhiteNoise`, 5 kHz, kCeilingOptical = 0.003f
+- vcaNoise[2]: `BandlimitedWhiteNoise`, 12 kHz, kCeilingVCA = 0.001f
+- fetNoise[2]: `PinkNoise` (Voss-McCartney), kCeilingFet = 0.0003f
+- vmuGridNoise[2]: `BandlimitedWhiteNoise`, 8 kHz, kCeilingVmGrid = 0.003f
+- vmuShotNoise[2]: `WhiteNoise`, kCeilingVmShot = 0.0005f
+- All scale with GR depth — zero injection at zero compression
 
-**Threading:** `currentGrDb` atomic written by DSP thread, read by UI timer at 30Hz for GR trace and Var-Mu ratio curve dot.
+**Auto gain:** Smoothed linear makeup matching output RMS to input RMS. Replaces manual makeup when toggled. Model-agnostic.
 
-## Dependencies on Other Projects
-- `Shared/StochasticEngine.h` — SI noise system
-- `Shared/ScionaughLookAndFeel.h/cpp` — all UI styling
-- `SICompressor.md` — complete SI implementation spec
+**GR metering:** `currentGrDb` atomic. `currentVmOverDb` for Variable-Mu ratio curve live dot.
 
-## Known Issues / Technical Debt
-- No browser prototype — no topology validated
-- Variable-Mu tube model parameters not specified in SICompressor.md (which tube?)
-- Pink noise generator (Voss-McCartney) not yet implemented in Shared/
+**BPM-sync:** `hostBpm`, `hostTsNum`, `hostTsDen` atomics read from playhead each block. GR display window length user-selectable (1/4, 1/2, 1, 2 bars).
+
+**Output waveform ring buffer:** 4096 samples, mono (0.5*(L+R)), feeds GR display half-wave overlay.
+
+**Parameters (APVTS IDs):** `model`, `auto_gain`, `oversample`, `aliveness` + per-topology params as per UI_Design_V1.md.
+
+**11 factory presets.**
+
+## Dependencies
+- `Shared/StochasticEngine.h`
+- `Shared/ScionaughLookAndFeel.h/cpp`
+- `Shared/ScionaughTelemetry.h/cpp`
 
 ## Open Questions
-- Which tube model parameters for the Variable-Mu gain reduction element?
-- Build browser prototype first or go direct to JUCE?
-- GR depth factor normalisation: 0..1 linear vs logarithmic?
+- Testing outcomes from beta v2 pending
+- muSat() characterisation: custom function, not a named Koren model. How closely does it reflect the Fairchild 670 tube's actual transconductance curve?
+- DspState resetted on model switch — is state preserved correctly when switching back?

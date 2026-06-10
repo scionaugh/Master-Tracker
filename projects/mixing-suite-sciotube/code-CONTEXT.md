@@ -1,73 +1,64 @@
 # Sciotube — Code Context
-<!-- ⚠️ CONTEXT UPDATE NEEDED — Code has progressed to beta v2 with stochastic noise + UI updates. Context written before JUCE implementation was underway. -->
 
 ## Architecture Overview
 
 ```
 Plugins/ScionaughTube/Source/
-├── PluginProcessor.h/cpp   ← DSP: Koren equations, oversampling, SI injection
-└── PluginEditor.h/cpp      ← UI: tube visual, transfer curve, THD display, knobs
+├── PluginProcessor.h/cpp   ← Koren DSP, oversampling, SI injection, presets, state
+└── PluginEditor.h/cpp      ← Tube visual, transfer curve, THD display, knobs
 ```
 
-Browser prototype: `Prototypes/Tube/thermionic_saturator.html` (complete, reference for JUCE build)
-Design doc: `Prototypes/Tube/THERMIONIC_SATURATOR.md`
-SI spec: `SITube.md`
+## Current Implementation (beta v2)
 
-## Key Technical Decisions
-
-**Core DSP — Koren transfer function (per sample, at 4x oversampled rate):**
+**Koren transfer function — full JUCE implementation:**
+```cpp
+E1 = (Vp/KP) * softplus(KP * (1/MU + Vg/sqrt(KVB + Vp^2)))
+Ip = E1^EX * 2 / KG1   if E1 > 0, else 0
 ```
-E1 = (Vp/KP) * log(1 + exp(KP * (1/MU + Vg/sqrt(KVB + Vp^2))))
-Ip = (E1^EX * 2) / KG1   if E1 > 0, else 0
-```
-- Vg = input_sample * drive + bias * 2
-- Vp = 150V fixed (static nonlinearity — no load-line solver yet)
-- Output = Ip - Ip_dc (static DC centering + one-pole DC blocker at ~10Hz for residual DC from asymmetric saturation)
-- Normalised so unity drive ≈ unity gain
+- softplus replaces log/exp for numerical stability: guards x > 20 (return x) and x < -20 (return exp(x))
+- Vp = 150V fixed
+- EG perturbation added pre-E1; shot noise multiplicative on (ip - ip_dc)
+- DC blocker: one-pole y = x - x1 + 0.9986*y1 (~10 Hz)
 
-**4x oversampling (in prototype; JUCE to match):**
-- 64-tap windowed-sinc FIR (Blackman kernel), 4 polyphase branches
-- Group delay: 60 high-rate samples = 15 host-rate samples
-- Dry path delay-matched (15 samples) for phase-coherent Mix blending
-- Measured aliasing at -144 to -191 dB with 5kHz tone at Drive 20 into 6C33C
-- `OS` constant drives all derived values (filter length, polyphase split, dry delay)
-- JUCE option: `juce::dsp::Oversampling` module can replace polyphase FIR
+**Oversampling:** Off / 2x / 4x via `juce::dsp::Oversampling` equiripple FIR. Default 4x. Latency reported to host and dry path delay-matched via `DryWetMixer.setWetLatency()`.
 
-**11 tube models — parameters from Tube.lib, Tube1.lib, errata.txt:**
-See chat-CONTEXT.md for full parameter table.
+**Stochastic Injection:**
+- gridNoise: `BandlimitedWhiteNoise`, 8 kHz cutoff, scales with |input|
+- shotNoise: `WhiteNoise`, multiplicative on (ip - ip_dc), scales with sqrt(|ip - ip_dc|)
+- kCeilingGrid = 1e-6f (~1 µV), kCeilingShot = 0.0005f (0.05% quiescent IP)
+- One noise draw per native sample, held constant across oversampled sub-steps
 
-**Stochastic Injection (from SITube.md):**
-- Grid noise: bandlimited white noise added to EG before E1 computation. Amplitude scales with |input|. Rolled off at ~8kHz at -12dB/oct (first-order IIR). Range: 0.5–5µV RMS referred to input.
-- Shot noise: multiplicative on IP after transfer function. Scales with sqrt(|IP|). White noise, no injection-point filtering. Range: 0.01–0.1% of quiescent IP.
-- Both driven by shared Aliveness knob via `StochasticEngine`. Both zero at silence.
-- Evaluate Aliveness conditional before noise arithmetic in per-sample loop.
-- IP_out = IP * (1 + noise_sample * drive_scaled)
-- sqrt(|IP|) must clamp to zero before sqrt to avoid NaN.
+**Parameters (APVTS IDs):** `tube`, `drive`, `bias`, `output`, `mix`, `hicut`, `oversample`, `aliveness`
 
-**APVTS parameter IDs:** `tube`, `drive`, `bias`, `output`, `mix`, `hicut`
+**Note on oversample param:** Added in beta v2 — design doc specified fixed 4x. Now user-selectable Off/2x/4x, default 4x.
 
-**UI components (from UI_Design_V1.md):**
-- `TubeDisplayComponent` — animated tube shape (4 categories), amber glow cycles 0.5→1.0 opacity on ~2.4s sine, 30Hz timer
-- `TransferCurveComponent` — live Koren curve, normalised, updates on drive/bias/tube changes
-- `THDDisplayComponent` — H2–H8 bars from HarmonicAnalyzer shared component, bar opacities breathe on 3s staggered sine
-- 5 `KnobWithLabel` components bound to APVTS
-- Threading: FFT → 7 atomic floats (H2–H8) → UI timer (30Hz) → repaint
+**Note on aliveness param:** Added in beta v2 — not in original design doc. Exposes SI depth as a real-time automatable control.
 
-## Dependencies on Other Projects
-- `Shared/StochasticEngine.h` — SI noise system
-- `Shared/HarmonicAnalyzer.h/cpp` — H2–H8 computation
-- `Shared/ScionaughLookAndFeel.h/cpp` — all UI styling
-- `SITube.md` — SI calibration targets and implementation notes
+**5 factory presets:**
+| Preset | Tube | Drive | Bias | Notes |
+|--------|------|-------|------|-------|
+| Bass | 300B | 5.0 | +0.2 | SET warmth, smooth H2 |
+| Snare | EL34 | 8.0 | -0.15 | British upper-mid edge |
+| Hats | 12AU7 | 2.5 | 0.0 | Transparent, minimal colour |
+| Drums | 12AX7 | 6.0 | +0.1 | Rich H2, musical density |
+| Leads | EL34 | 10.0 | -0.2 | Presence + odd-harmonic bite |
+
+**12AX7 parameters used:** 1996 version (MU=100, EX=1.4, KG1=1060, KP=600, KVB=300) — the version question from the design docs was resolved in favour of the 1996 Koren library values.
+
+**HarmonicAnalyzer:** Feeds H2–H8 bar display in editor.
+
+**State serialisation:** APVTS state + instanceSeed + telemetry (Base64 encoded).
+
+## Dependencies
+- `Shared/StochasticEngine.h`
+- `Shared/HarmonicAnalyzer.h/cpp`
+- `Shared/ScionaughLookAndFeel.h/cpp`
+- `Shared/ScionaughTelemetry.h/cpp`
 
 ## Known Issues / Technical Debt
-- Static plate voltage (Vp = 150V) — planned upgrade: Newton-Raphson nodal solver per sample
-- Inter-element capacitances simplified to single Hi Cut knob — planned: per-tube IIR from CCG, CGP, CCP with gain-dependent Miller effect on CGP
-- Grid conduction diode not yet implemented — positive-boundary clamping absent
-- No power supply sag — planned: low-pass filtered feedback on effective plate voltage
+- Fixed plate voltage (Vp = 150V) — nodal solver still planned for future version
+- Inter-element capacitances: Hi Cut knob is still a single manual approximation
 
 ## Open Questions
-- Which 12AX7 parameters are authoritative: 1996 (MU=100, KP=600, KVB=300) vs 1997 revision (MU=107.5, KP=549, KVB=8)? Must resolve before JUCE finalisation — KVB=8 vs 300 produces meaningfully different transfer functions.
-- Which 5 of 11 tubes ship in v1? Requires listening session across full Drive/Bias range.
-- 4x vs 8x oversampling — is 8x needed for KT88/6C33C (KP=32/15)? Needs aliasing analysis.
-- Grid conduction diode: include or exclude? Musical utility vs complexity not evaluated.
-- Make oversampling user-selectable when project rate ≥ 88.2 kHz?
+- Testing outcomes from beta v2 pending
+- Does instanceSeed serialisation survive a DAW project reload correctly?

@@ -1,67 +1,68 @@
 # Sciotape — Code Context
-<!-- ⚠️ CONTEXT UPDATE NEEDED — Code has progressed to beta v2 with stochastic noise + UI updates. Context written before JUCE implementation was underway. -->
 
 ## Architecture Overview
 
 ```
 Plugins/ScionaughTape/Source/
-├── PluginProcessor.h/cpp   ← DSP: J-A integrator, bias oscillator, EQ chain, oversampling
-└── PluginEditor.h/cpp      ← UI: tape transport animation, B-H loop display, knobs
+├── PluginProcessor.h/cpp   ← J-A DSP, oversampling, gap filter, SI injection, presets
+└── PluginEditor.h/cpp      ← Tape transport animation, B-H loop display, knobs
 ```
 
-Design doc: `Prototypes/Tape/Tape_Saturator_Design_Outline.md` (21KB, v1.0 — primary handoff doc for JUCE)
-SI spec: `SITape.md`
-Browser prototype: NOT YET BUILT
+## Current Implementation (beta v2)
 
-## Key Technical Decisions
+**Jiles-Atherton integrator — full JUCE implementation:**
+- Splits irreversible magnetisation (Mirr) from the reversibility blend
+- Total M = (1 - revC) * Mirr + revC * Man
+- Character knob maps to reversibility coefficient revC — higher Character = lower revC = squarer loop
+- hePerturb added to He before integration (stochastic injection)
+- coth singularity guarded in jaStep
 
-**Core DSP — Jiles-Atherton hysteresis integrator (stateful, not memoryless):**
-- Man = MS * (coth(H/a) - a/H)    [Taylor expand for |H| < epsilon: MS*H/(3*a)]
-- dM/dH = (Man - M) / (k*delta - alpha*(Man - M))
-- delta tracks sign of dH (NOT sign of H — common implementation error)
-- Denominator must be clamped to min absolute value before division
+**AC bias — transfer-function approach, NOT a literal oscillator:**
+- Original design doc specified a literal ultrasonic oscillator summed before J-A
+- Implemented differently: bias shifts the reversibility blend in buildEffectiveParams
+- Overbias adds a one-pole HF roll-off (one pole per channel, native rate, post gap)
+- This avoids aliasing issues that would arise from a sampled ultrasonic tone through the J-A nonlinearity
 
-**Six-stage signal chain (order fixed, stages may not be merged):**
-1. Record amplifier: Drive + pre-emphasis EQ
-2. Upsample 8x
-3. Bias injection (AC oscillator summed before J-A — not after)
-4. J-A integrator
-5. Playback head: dM/dt differentiation + gap loss sinc filter
-6. Downsample 8x → playback amplifier (post-EQ + output gain)
+**Gap loss:** Biquad LPF approximating sinc gap loss. Applied post-downsample at native rate. Recomputed only when gap (µm) or tape speed changes.
 
-**8x oversampling minimum.** Internal rate 352.8 kHz at 44.1 kHz host. Bias oscillator at ~100 kHz = 28% of internal Nyquist.
+**Oversampling:** Off / 2x / 4x via `juce::dsp::Oversampling` equiripple FIR. Default 4x.
 
-**5 tape models — 7 parameters each:**
-MS (saturation magnetisation), Hc (coercivity), Mr (remanence ratio), a (domain wall density), k (pinning), alpha (inter-domain coupling), Bias (as multiple of Hc), Gap (µm).
-Models: Ferric LH, Ampex 456 (primary calibration reference), Scotch 250, Agfa PEM 468, Metal Particle.
-All parameter values are calibration starting points — require curve-fitting against Dempwolf et al. 2011 before production.
+**5 tape models with calibrated parameters:**
+| Model | MS | Hc | Mr | a | k | alpha | biasNom | gap |
+|-------|----|----|----|----|---|-------|---------|-----|
+| Ferric LH | 320 | 240 | 0.78 | 1400 | 440 | 2.0e-4 | 0.65 | 2.0µm |
+| Ampex 456 | 500 | 310 | 0.86 | 920 | 360 | 1.6e-4 | 0.72 | 2.5µm |
+| Scotch 250 | 460 | 280 | 0.83 | 1050 | 380 | 1.7e-4 | 0.70 | 2.3µm |
+| PEM 468 | 540 | 330 | 0.89 | 820 | 320 | 1.3e-4 | 0.75 | 2.8µm |
+| Metal Particle | 580 | 350 | 0.91 | 780 | 300 | 1.1e-4 | 0.77 | 3.0µm |
 
-**Stochastic Injection (from SITape.md):**
-- He field perturbation injected before J-A integration, scaling with applied field H
-- Particulate noise on M after integration but before playback differentiation
-- AC bias noise explicitly excluded
+**Stochastic Injection:**
+- heNoise: `BandlimitedWhiteNoise`, scales with |He| — field perturbation pre-integration
+- particulateNoise: `WhiteNoise`, multiplicative on replayed M
+- kCeilingHe = 0.003f (0.3% of Hc), kCeilingM = 0.002f (0.2% of Ms)
 
-**APVTS parameter IDs:** `model`, `speed`, `drive`, `bias`, `output`, `onset`, `ceiling`, `character`, `knee`, `thickness`, `gap`, `recEq`, `playEq`
+**Parameters (APVTS IDs):** `model`, `speed`, `drive`, `bias`, `output`, `onset`, `ceiling`, `character`, `knee`, `thickness`, `gap`, `recEq`, `playEq`, `oversample`, `aliveness`
 
-**UI components (from UI_Design_V1.md):**
-- `TapeTransportComponent` — animated reels (speed → rotation rate), ribbon (drive → glow), head assembly (gap → line width, bias → glow colour temperature)
-- `BHLoopComponent` — live Jiles-Atherton loop, updates with physics offset knobs
-- Three knob sections: Primary (drive/bias/output), Physics Offsets (onset/ceiling/character/knee/thickness), Machine (gap + EQ toggles)
+**B-H loop display:** `computeBHLoop()` drives the J-A core with a sinusoidal field sweep to its steady-state limit cycle. Renders the exact audio model, not an approximation. 400 points.
 
-## Dependencies on Other Projects
-- `Shared/StochasticEngine.h` — SI noise system
-- `Shared/ScionaughLookAndFeel.h/cpp` — all UI styling
-- `SITape.md` — SI injection point spec
-- Dempwolf et al. DAFx 2011 — external calibration source for J-A parameters (not in project files)
-- `Prototypes/Tube/thermionic_saturator.html` — UI reference for browser prototype
+**8 factory presets.**
 
-## Known Issues / Technical Debt
-- Browser prototype not yet built — J-A architecture unvalidated
-- All 5 tape model parameter sets are starting estimates, none calibrated against measured data
-- EQ time constant implementation (IEC/NAB biquad chain) not yet scoped for Phase 1
+**State serialisation:** APVTS state + instanceSeed + telemetry.
+
+## Key Divergences from Design Doc
+- AC bias is a transfer-function model, not a literal oscillator — oscillator approach removed intentionally (avoids aliasing from sampled ultrasonic tone through J-A)
+- Oversampling: design doc specified 8x minimum (driven by oscillator Nyquist requirement). With oscillator removed, 8x requirement no longer applies — code implements Off/2x/4x matching the rest of the suite
+- Oversampling is user-selectable (Off/2x/4x, default 4x) — design doc specified fixed rate
+- IEC/NAB EQ chain: recEq/playEq parameters exist but implementation status TBC from testing
+- No separate record/playback amplifier stages as originally specced — simplified to drive + output gain
+
+## Dependencies
+- `Shared/StochasticEngine.h`
+- `Shared/HarmonicAnalyzer.h/cpp`
+- `Shared/ScionaughLookAndFeel.h/cpp`
+- `Shared/ScionaughTelemetry.h/cpp`
 
 ## Open Questions
-- Phase 1 bias frequency not finalised — design doc specifies 40–60 kHz at 4x OS
-- Phase 1: implement full IEC/NAB EQ chain (all 4 speeds) or simplify to single speed for initial J-A validation?
-- Static vs nodal solver question (same as Sciotube): is full J-A integration audibly superior to a simpler approximation at mixing saturation levels?
-- Ampex 456 parameter calibration against Dempwolf 2011 — first model to calibrate, all others relative to it
+- Testing outcomes from beta v2 pending
+- IEC/NAB EQ chain: what is current implementation status of recEq/playEq?
+- Tape model parameter calibration against Dempwolf 2011 — still outstanding

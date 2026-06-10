@@ -27,7 +27,7 @@ A vertical spatialiser that places sounds convincingly from Tailbone (−90°) t
 - `UI_Design_V1.md` — XY pad, vectorscope, correlation meter layout
 
 ## Open Questions
-- Velvet noise upgrade: implement in browser prototype first or go straight to JUCE?
-- Phase 2 HRTF notch: use CIPIC database measurements or a parametric notch model?
-- Should body position be a continuous XY pad parameter or a discrete stepped selector?
-- No SI specification document exists yet for ScioSpace — needs to be written
+- Velvet noise upgrade: current ring-buffer approach works. VND still worth implementing for CPU efficiency (~76% fewer ops) — defer to post-testing
+- Phase 2 HRTF notch: implemented in beta v2 using a parametric model (not CIPIC database). Whether CIPIC data would improve accuracy is a future question
+- Body position: implemented as continuous XY pad parameter
+- No SI specification document exists for ScioSpace — the decorrelation noise is handled separately from the Aliveness SI system
