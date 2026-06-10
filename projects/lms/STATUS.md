@@ -20,7 +20,9 @@ LMS build phases 1–11 complete. sciosound-lms repo connected to Netlify and de
 - sciosound.com DNS still on GoDaddy — not yet migrated to Netlify
 
 
+
 ## Recent Commits
+- 2026-06-10 · 52c7313 · Add Plugins nav link to all member pages
 - 2026-06-10 · 251a418 · Phase 13–16 progress: store, DNS live, hardening partial
 - 2026-06-06 · 6d1c110 · Add _redirects file
 - 2026-06-06 · 77c9e8e · Initial commit — ScioSound LMS (Phases 1–12 complete)
