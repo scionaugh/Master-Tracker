@@ -67,6 +67,20 @@ If the project is ambiguous or not named, ask which project before filing.
 | Sciotube                                        | `mixing-suite-sciotube`          |
 | Scionaugh Website, website                      | `website`                        |
 
+### Batch import (e.g. from phone notes)
+
+The user may paste a block of lines captured elsewhere (Notes, Keep, etc.), one item per line, format:
+
+`ProjectName: item text`
+
+(ProjectName matches the mapping table above, case-insensitive, partial matches OK e.g. "Glue" -> ScioGlue).
+
+When such a block is pasted (or the user says "file these into their projects"):
+1. Parse each line into project + item text.
+2. Append each to the matching `TODO.md` under `## Open` as `- [ ] YYYY-MM-DD — <item text>` (today's date).
+3. If a line's project can't be matched, ask rather than guessing.
+4. Reply with a short summary: how many items filed, to which projects. No need to restate each item back in full.
+
 ### Resolving items
 
 When the user says an item is done (e.g. "mark X done on ScioGlue's todo"), move the line from `## Open` to `## Done`, change `- [ ]` to `- [x]`, and append the completion date.

@@ -21,7 +21,9 @@ LMS build phases 1–11 complete. sciosound-lms repo connected to Netlify and de
 
 
 
+
 ## Recent Commits
+- 2026-06-10 · fd27cb1 · Add member Store page with Plugins + Course tabs
 - 2026-06-10 · 52c7313 · Add Plugins nav link to all member pages
 - 2026-06-10 · 251a418 · Phase 13–16 progress: store, DNS live, hardening partial
 - 2026-06-06 · 6d1c110 · Add _redirects file

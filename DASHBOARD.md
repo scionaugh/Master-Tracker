@@ -1,20 +1,20 @@
 # 2026-06-10
 
-## Check-in 2 — Status update
+## Check-in 3 — 10:45 UTC
 
 ### Projects
 
 #### ScioSound LMS (sciosound.com)
-**Status:** ACTIVE — Phases 1–11 complete, DNS migration pending, Lemon Squeezy under verification
+**Status:** ACTIVE — Phases 1–11 complete, now implementing Phases 13–16 (store, DNS, hardening) from SETUP-LOG.md before launch
 
 #### Ableton Course (ScioSound LMS)
-**Status:** ACTIVE — Curriculum planning. Modules 1–3 have full lesson plans, 4–17 scoped, Module 18 a placeholder.
+**Status:** ACTIVE — Curriculum fully scoped for Modules 1–17 (Module 18 a placeholder); ready to start building Module 1
 
 #### Sound Science Course (ScioSound LMS)
 **Status:** ACTIVE — Curriculum planning. 18-lesson table designed, no lessons built yet.
 
 #### Scionaugh Website (scionaugh.com)
-**Status:** ACTIVE — Live on Netlify, DNS migrated, awaiting setup-log implementation
+**Status:** ACTIVE — Two-site split complete (store.html now advertisement-only, redirects to sciosound.com/store); remaining work is wiring Formspree to the booking form
 
 #### Mixing Suite
 **Status:** ACTIVE — All four plugins at beta v2 with stochastic noise + UI updates; suite-level testing is the active focus.
@@ -34,8 +34,11 @@
 | ScioSound LMS | Netlify env vars (SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY, LEMON_SQUEEZY_SECRET) not set |
 | ScioSound LMS | sciosound.com/store page incomplete |
 | ScioSound LMS | sciosound.com DNS still on GoDaddy |
-| Scionaugh Website | store.html rework blocked on sciosound.com/store page (LMS) |
+
+### Open Todos
+None — all project todo inboxes are empty.
 
 ### Notes
-- Mixing Suite has progressed from browser prototypes to beta v2 across all four plugins since check-in 1 — prior Sciotube (12AX7 version) and Sciotape (no prototype) blockers appear resolved
-- No HIGH priority projects set; all treated as MEDIUM
+- Scionaugh Website's prior blocker (store.html rework pending LMS store page) is resolved via the two-site split: store.html is now advertisement-only and no longer depends on the LMS store page.
+- LMS commit "251a418 — Phase 13–16 progress: store, DNS live, hardening partial" suggests DNS may now be live, but STATUS.md still lists DNS migration as pending and as a blocker — worth confirming and updating if resolved.
+- No HIGH priority projects set; all treated as MEDIUM.
