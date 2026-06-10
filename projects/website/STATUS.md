@@ -1,18 +1,19 @@
 # Scionaugh Website (scionaugh.com)
 
 **Last Updated:** 2026-06-10
-**Status:** ACTIVE — Live on Netlify, DNS migrated, two-site split complete
+**Status:** ACTIVE — Live, two-site split complete, placeholder waitlist forms in place
 
 ## Current Focus
-Two-site architecture split complete. store.html is now advertisement-only — all buy CTAs redirect to sciosound.com/store. consent.html replaced with a meta-refresh redirect to sciosound.com/store. Remaining work is wiring Formspree to the booking form.
+scionaugh.com is fully advertisement/marketing only. Placeholder waitlist forms exist on education.html (course) and store.html (plugin beta) — both will be replaced with links to sciosound.com once those pages are built. Booking form on index.html still needs Formspree. Mobile nav complete.
 
 ## Next Actions
-- Wire Formspree to the booking form on index.html
+- Wire Formspree to booking form on index.html
+- Replace placeholder waitlist forms with links to sciosound.com once those pages exist (blocked on LMS project)
 - Generate og-image.jpg (1200x630) for social sharing meta tag
-- Set up Patreon — update placeholder link
 
 ## Blockers
-- None current on scionaugh.com side
+- Waitlist form update blocked on sciosound.com waitlist pages (LMS project)
+- sciosound.com DNS transfer needed before email + mailing list setup can begin
 
 
 

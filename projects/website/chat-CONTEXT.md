@@ -15,6 +15,12 @@ Static marketing and artist site for Scionaugh (Bush Prog / Deep Daytime) and Sc
 
 **consent.html replaced with redirect:** consent.html on scionaugh.com now contains only a meta-refresh redirect to sciosound.com/store. The real consent and checkout live on sciosound.com. Decision resolved — redirect rather than delete, in case of bookmarks.
 
+**Waitlist forms are placeholders on scionaugh.com:** Both the course waitlist (education.html) and plugin beta signup (store.html) have fake email forms that show a success state but don't submit anywhere. Both will be replaced with links to sciosound.com once those pages are built. sciosound.com owns all waitlist/signup capture — scionaugh.com just drives traffic there.
+
+**store.html is now a coming-soon page:** Full plugin showcase archived as store-launch.html (blocked from Netlify via netlify.toml). Swap back when plugins ship.
+
+**Mobile nav added:** Hamburger menu on all three pages (index, education, store) — z-index 101 to clear the project toggle bar on index.html.
+
 **Pricing confirmed:** $15 AUD per plugin / $50 AUD full bundle. Beta testers get lifetime access.
 
 ## Hosting & Deployment

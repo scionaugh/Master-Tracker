@@ -24,6 +24,10 @@ Full-control member platform at sciosound.com. Music production course delivered
 
 **New store page added to pre-launch scope:** `sciosound.com/store.html` not in the original LMS plan but identified as necessary before launch. Must be built and added as a phase before launch. Should include: full plugin listings, pricing, consent flow, and login prompt before checkout.
 
+**sciosound.com owns all waitlist/signup capture:** Both the course waitlist and plugin beta signup belong to sciosound.com. scionaugh.com has placeholder email forms that will be replaced with links to sciosound.com pages once built. Setup sequence: DNS transfer → hello@sciosound.com email → mailing list platform (Brevo/Mailchimp) with domain auth → build waitlist pages → update scionaugh.com links.
+
+**Email address needed:** hello@sciosound.com (Google Workspace or Zoho). DNS transfer to Netlify is the first blocker — MX/SPF/DKIM records go into Netlify DNS once it's migrated.
+
 **Patreon integration deferred to Phase 14:** Post-launch only. Requires `patreon_id` column, OAuth flow, and `patreon-webhook.js`. Do not build until after defining what Patreon tier gets vs one-time buyers.
 
 ## Hosting & Deployment
