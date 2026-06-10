@@ -19,5 +19,8 @@ LMS build phases 1–11 complete. sciosound-lms repo connected to Netlify and de
 - sciosound.com/store page (store.html + store/consent.html) is in progress but not finished — must be complete before either purchase flow (Flow A or Flow B) is functional end-to-end
 - sciosound.com DNS still on GoDaddy — not yet migrated to Netlify
 
+
 ## Recent Commits
-<!-- Auto-updated on each git commit -->
+- 2026-06-10 · 251a418 · Phase 13–16 progress: store, DNS live, hardening partial
+- 2026-06-06 · 6d1c110 · Add _redirects file
+- 2026-06-06 · 77c9e8e · Initial commit — ScioSound LMS (Phases 1–12 complete)
