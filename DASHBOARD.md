@@ -1,36 +1,41 @@
 # 2026-06-10
 
-## Check-in 1 — Initial tracker setup complete
+## Check-in 2 — Status update
 
 ### Projects
 
-#### 🚨 Blocked
+#### ScioSound LMS (sciosound.com)
+**Status:** ACTIVE — Phases 1–11 complete, DNS migration pending, Lemon Squeezy under verification
 
-| Project | Blocker |
-|---------|---------|
-| ScioSound LMS | Lemon Squeezy account under verification — products and webhook secret blocked |
-| ScioSound LMS | Netlify env vars not set — payment webhook non-functional |
-| Scionaugh Website | store.html rework blocked on sciosound.com/store page being built (LMS) |
-| Sciotube | 12AX7 parameter version unresolved (1996 vs 1997 Koren) — JUCE implementation blocked |
-| Sciotape | No browser prototype built — J-A architecture unvalidated |
+#### Ableton Course (ScioSound LMS)
+**Status:** ACTIVE — Curriculum planning. Modules 1–3 have full lesson plans, 4–17 scoped, Module 18 a placeholder.
+
+#### Sound Science Course (ScioSound LMS)
+**Status:** ACTIVE — Curriculum planning. 18-lesson table designed, no lessons built yet.
+
+#### Scionaugh Website (scionaugh.com)
+**Status:** ACTIVE — Live on Netlify, DNS migrated, awaiting setup-log implementation
 
 #### Mixing Suite
-**Status:** ACTIVE — JUCE scaffolding complete, shared infrastructure in place, DSP implementations are the active work front.
+**Status:** ACTIVE — All four plugins at beta v2 with stochastic noise + UI updates; suite-level testing is the active focus.
 
 | Plugin | Status | Current Focus |
 |--------|--------|---------------|
-| Sciotube | ACTIVE | Browser prototype done — audition 11 tubes to select 5 that ship |
-| Sciotape | ACTIVE | Design doc done — browser prototype not yet built |
-| ScioGlue | ACTIVE | Design + SI spec done — browser prototype not yet built |
-| ScioSpace | ACTIVE | Browser prototype built — fix noise calibration bug, then JUCE |
+| Sciotube | ACTIVE | Beta v2 installed — awaiting testing |
+| Sciotape | ACTIVE | Beta v2 installed — awaiting testing |
+| ScioGlue | ACTIVE | Beta v2 installed — awaiting testing |
+| ScioSpace | ACTIVE | Beta v2 installed — awaiting testing |
 
-#### ScioSound LMS
-**Status:** ACTIVE — Phases 1–11 complete, Phase 12 (security hardening) next before launch.
+### Blocked
 
-#### Scionaugh Website
-**Status:** ACTIVE — store.html rework pending, blocked on LMS building sciosound.com/store first.
+| Project | Blocker |
+|---------|---------|
+| ScioSound LMS | Lemon Squeezy account under verification — products, pricing, webhook secret blocked |
+| ScioSound LMS | Netlify env vars (SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY, LEMON_SQUEEZY_SECRET) not set |
+| ScioSound LMS | sciosound.com/store page incomplete |
+| ScioSound LMS | sciosound.com DNS still on GoDaddy |
+| Scionaugh Website | store.html rework blocked on sciosound.com/store page (LMS) |
 
 ### Notes
-- Master tracker set up today with auto-update hooks across all three coding repos
-- Priority fields added — not yet filled in
-- Daily log system activated from this check-in onwards
+- Mixing Suite has progressed from browser prototypes to beta v2 across all four plugins since check-in 1 — prior Sciotube (12AX7 version) and Sciotape (no prototype) blockers appear resolved
+- No HIGH priority projects set; all treated as MEDIUM

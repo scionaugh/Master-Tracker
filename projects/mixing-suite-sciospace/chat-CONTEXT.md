@@ -16,6 +16,8 @@ A vertical spatialiser that places sounds convincingly from Tailbone (−90°) t
 
 **Seven named body positions:** Up The Head (+90°), Head (+45°), Throat (+20°), Heart/Reference (0°), Stomach (−20°), Lower Belly (−45°), Tailbone (−90°).
 
+(Early design sessions specced this as an 8-position "body spatial stage" — Above Head/Head/Throat/Chest/Stomach/Hips/Feet/Below Feet — as the final stage on EVERY plugin in the suite, tied to a "BST" architecture. That per-plugin staging idea was dropped in favour of a single standalone ScioSpace plugin with this continuous XY-pad positioning.)
+
 **Velvet Noise Decorrelator (VND) is the planned upgrade** for the current Gaussian noise injection — 76–88% fewer CPU operations, no FFT required, multiplier-free.
 
 **Mono-compatibility requirement:** Phase correlation coefficient must remain +0.3 to +0.7. FFT null test (mono sum) must have <0.7 dB ripple across 20 Hz–20 kHz.

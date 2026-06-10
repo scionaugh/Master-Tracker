@@ -13,17 +13,21 @@ Static marketing and artist site for Scionaugh (Bush Prog / Deep Daytime) and Sc
 
 **Education and Plugins removed from index.html:** They live on dedicated pages (education.html, store.html) only. Index is the artist hub.
 
-**consent.html to be moved to sciosound.com:** The real consent and checkout now live on sciosound.com. consent.html on scionaugh.com is no longer part of the purchase flow — decision pending on whether to keep or remove it.
+**consent.html replaced with redirect:** consent.html on scionaugh.com now contains only a meta-refresh redirect to sciosound.com/store. The real consent and checkout live on sciosound.com. Decision resolved — redirect rather than delete, in case of bookmarks.
 
 **Pricing confirmed:** $15 AUD per plugin / $50 AUD full bundle. Beta testers get lifetime access.
 
+## Hosting & Deployment
+- **Netlify:** scionaugh-website repo connected to Netlify, deployed as a static site (no build command, publish directory `.`). Auto-deploys on push to `main`.
+- **DNS:** Migrated from GoDaddy to Netlify DNS. Nameservers updated in GoDaddy to dns1.p06.nsone.net, dns2.p06.nsone.net, dns3.p06.nsone.net, dns4.p06.nsone.net. SSL will auto-provision once propagation completes.
+- **SETUP-LOG.md:** Deployment log with architecture decisions and full to-do list, produced this session — to be added to both this repo and sciosound-lms.
+- GitHub is the single source of truth — Netlify pulls automatically on push.
+
 ## Constraints and Dependencies
-- **Depends on LMS project:** store.html rework requires sciosound.com/store page to exist first
-- **Lemon Squeezy:** checkout URL in consent.html is a placeholder — needs replacing with real URL once LS account is verified
+- **Lemon Squeezy:** checkout happens on sciosound.com — scionaugh.com no longer holds any checkout URLs
 - **Code signing:** plugins must be code-signed (Apple Developer Program for Mac, certificate for Windows) before public launch
 - **GitHub repo:** `git@github.com:scionaugh/scionaugh-website.git` (SSH only — HTTPS does not work on this machine)
 
 ## Open Questions
-- Keep or remove consent.html from scionaugh.com entirely once sciosound.com takes over the purchase flow?
 - Choose mailing list platform (Mailchimp vs ConvertKit) for education.html signup field
 - Patreon integration — deferred post-launch; what tier gets course access vs one-time buyers?
