@@ -18,9 +18,10 @@ Two-site architecture split complete. store.html is now advertisement-only — a
 
 
 
+
 ## Recent Commits
+- 2026-06-10 · 799e919 · Education + plugin page UX updates
 - 2026-06-10 · 64fe2da · Sciotech mode: booking title and marquee follow project accent colour
 - 2026-06-10 · a8b01a0 · Add mobile hamburger nav to all pages
 - 2026-06-10 · 3c71323 · Plugins coming soon page, archive full store, remove music player
 - 2026-06-10 · fadf99e · Two-site split: store.html advertisement-only, consent.html redirect, block dev files from Netlify
-- 2026-06-05 · 90a928e · Update CLAUDE.md to reflect current site state
