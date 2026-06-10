@@ -15,7 +15,9 @@ Two-site architecture split complete. store.html is now advertisement-only — a
 - None current on scionaugh.com side
 
 
+
 ## Recent Commits
+- 2026-06-10 · 3c71323 · Plugins coming soon page, archive full store, remove music player
 - 2026-06-10 · fadf99e · Two-site split: store.html advertisement-only, consent.html redirect, block dev files from Netlify
 - 2026-06-05 · 90a928e · Update CLAUDE.md to reflect current site state
 - 2026-06-05 · f8956a2 · Ignore Claude settings.local.json
