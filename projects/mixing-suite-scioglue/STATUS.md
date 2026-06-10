@@ -1,15 +1,15 @@
 # ScioGlue — Compressor
 
 **Last Updated:** 2026-06-10
-**Status:** ACTIVE
+**Status:** ACTIVE — Beta v2 installed, awaiting testing
 
 ## Current Focus
-Design and SI specification complete for all four topologies. JUCE scaffolding in place. No browser prototype built yet — DSP implementation is the next phase.
+VST beta v2 created and installed with stochastic noise implementation and UI updates. Awaiting testing.
 
 ## Next Actions
-- Build browser prototype to validate each topology's compression character and SI behaviour
-- Implement per-topology DSP in JUCE (Optical → VCA → FET → Variable-Mu)
-- Calibrate SI noise ceilings per topology against listening targets in SICompressor.md
+- Test stochastic noise behaviour at varying Aliveness settings
+- Test UI updates
+- Log bugs and findings for next development cycle
 
 ## Blockers
 <!-- Leave blank if none -->

@@ -1,18 +1,18 @@
 # Sciotube — Thermionic Tube Saturator
 
 **Last Updated:** 2026-06-10
-**Status:** ACTIVE
+**Status:** ACTIVE — Beta v2 installed, awaiting testing
 
 ## Current Focus
-Browser prototype is complete; next step is tube auditioning to select the 5 shipping models before JUCE implementation begins.
+VST beta v2 created and installed with stochastic noise implementation and UI updates. Awaiting testing.
 
 ## Next Actions
-- Audition all 11 tube models across Drive and Bias range to determine which 5 ship
-- Evaluate static waveshaper vs nodal (Newton-Raphson) solver — compare prototype against load-line version before committing to JUCE architecture
-- Coordinate SI noise injection points with Stochastic Injection system implementation
+- Test stochastic noise behaviour at varying Aliveness settings
+- Test UI updates
+- Log bugs and findings for next development cycle
 
 ## Blockers
-- Which 12AX7 parameter set is authoritative: 1996 Koren (MU=100, KP=600, KVB=300) vs 1997 revision (MU=107.5, KP=549, KVB=8) — must be resolved before JUCE implementation
+<!-- Leave blank if none -->
 
 ## Recent Commits
 <!-- Auto-updated on each Mixing Suite git commit -->
