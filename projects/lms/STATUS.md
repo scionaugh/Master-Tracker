@@ -34,9 +34,10 @@ LMS build phases 1–11 complete. sciosound-lms repo connected to Netlify and de
 
 
 
+
 ## Recent Commits
+- 2026-06-11 · 4861d75 · Fix swapped ScioTape and ScioSpace images
 - 2026-06-11 · c1c7dac · Add plugin screenshots to member store cards
 - 2026-06-11 · a0fd221 · Add plugin screenshot images for store
 - 2026-06-10 · 790eb5d · Update CLAUDE.md and LMS-PLAN.md — session wrap-up (2026-06-10)
 - 2026-06-10 · 065e4c6 · Make store page publicly accessible without auth
-- 2026-06-10 · fd27cb1 · Add member Store page with Plugins + Course tabs
