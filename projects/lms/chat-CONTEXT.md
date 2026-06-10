@@ -50,8 +50,14 @@ Full-control member platform at sciosound.com. Music production course delivered
 - **Supabase email confirmation:** disabled during Phase 3 testing — MUST be re-enabled before launch. Part of Phase 12 (security hardening), which is flagged as non-optional before launch
 - **Plugin code signing:** required before public launch (Apple Developer Program for Mac, certificate for Windows)
 
+## Pricing (decided 2026-06-10)
+- Plugins: $15 AUD each / $50 AUD bundle, one-time, lifetime access (LS products not yet created)
+- Course Early Access (monthly subscription): $12 AUD/month, one module/month, access only while subscribed (not lifetime — avoids cheap subscribers getting full lifetime access to the finished course)
+- Course Complete (one-time, post-launch): $149 AUD, lifetime access
+- Anchoring context: Tribone Academy high-ticket coaching ($3,799 AUD or $349/mo x 12) and an impromptu masterclass sold via Outerverse ($42 for ~3-4 modules' worth of content) both informed the $149 figure as a floor for the finished 18-module course
+- Founding-member launch discount floated but not finalised: first 10 buyers $129, next 10 $149, against a higher list price (e.g. $179) via discount codes
+
 ## Open Questions
-- Price points for monthly subscription (early access) and one-time purchase (complete course) — not yet decided
-- Plugin pricing confirmed ($15 AUD / $50 AUD bundle) but LS products not yet created
+- Founding-member discount mechanic: exact list price and discount code structure not finalised
 - What does the sciosound.com/store page look like — full storefront with course + plugins together, or separate pages?
 - Patreon tier definition: what does a Patreon subscriber get vs a one-time course buyer?

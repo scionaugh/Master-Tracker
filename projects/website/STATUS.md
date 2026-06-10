@@ -4,15 +4,14 @@
 **Status:** ACTIVE — Live, two-site split complete, placeholder waitlist forms in place
 
 ## Current Focus
-scionaugh.com is fully advertisement/marketing only. Placeholder waitlist forms exist on education.html (course) and store.html (plugin beta) — both will be replaced with links to sciosound.com once those pages are built. Booking form on index.html still needs Formspree. Mobile nav complete.
+scionaugh.com is fully advertisement/marketing only. Placeholder waitlist forms exist on education.html (course) and store.html (plugin beta) — sciosound.com's store is now live, but these forms will intentionally stay as waitlists (going nowhere) until ready to direct traffic there. Booking form on index.html still needs Formspree. Mobile nav complete.
 
 ## Next Actions
 - Wire Formspree to booking form on index.html
-- Replace placeholder waitlist forms with links to sciosound.com once those pages exist (blocked on LMS project)
+- Replace placeholder waitlist forms with links to sciosound.com when ready to direct traffic there (sciosound.com store is live; hold is intentional, not a dependency)
 - Generate og-image.jpg (1200x630) for social sharing meta tag
 
 ## Blockers
-- Waitlist form update blocked on sciosound.com waitlist pages (LMS project)
 - sciosound.com DNS transfer needed before email + mailing list setup can begin
 
 
