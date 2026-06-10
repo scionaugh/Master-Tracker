@@ -11,10 +11,13 @@
 When asked for a daily dashboard:
 - Summarise all projects from `projects/*/STATUS.md` into a single clean view
 - Flag anything marked as `BLOCKED`
+- Read each project's `TODO.md` and include an **Open Todos** section: list each project with open (unchecked) items, and the count. Omit projects with zero open items.
 
 ## File Update Rule
 
 **Never update any file unless explicitly asked to.**
+
+Exception: capturing a quick-capture todo (see below) is itself an explicit request, so it does not require separate confirmation.
 
 ## Folder Reference
 
@@ -25,6 +28,7 @@ master-tracker/
 └── projects/
     └── [project-name]/
         ├── STATUS.md          ← single source of truth for current state
+        ├── TODO.md            ← quick-capture inbox (see below)
         ├── chat-CONTEXT.md    ← planning/conversation background (read on request)
         └── code-CONTEXT.md    ← technical background (read on request)
 ```
@@ -33,6 +37,43 @@ master-tracker/
 
 - Projects may have one or both CONTEXT files depending on whether they have a chat and/or coding component
 - If a project is chat-only, `code-CONTEXT.md` can be omitted (and vice versa)
+
+## Quick Capture — Todo Inbox
+
+Lets the user drop a quick note about any project, from any chat, without breaking flow.
+
+### Trigger
+
+When the user says something like "note for X: ...", "todo for X: ...", "add to X's todo: ...", or otherwise clearly flags an item to remember for a specific project:
+
+1. Identify the project folder using the name mapping below.
+2. Append a new line under `## Open` in `projects/[project-name]/TODO.md`:
+   `- [ ] YYYY-MM-DD — <item text>` (use today's date)
+3. Confirm briefly (one line) — don't narrate further.
+
+If the project is ambiguous or not named, ask which project before filing.
+
+### Project name mapping
+
+| User says (examples)                          | Folder                          |
+|------------------------------------------------|----------------------------------|
+| ScioSound LMS, LMS                              | `lms`                            |
+| Ableton Course                                  | `lms-ableton-course`             |
+| Sound Science Course                            | `lms-sound-science-course`       |
+| Mixing Suite (suite-level)                      | `mixing-suite`                   |
+| ScioGlue                                        | `mixing-suite-scioglue`          |
+| ScioSpace                                       | `mixing-suite-sciospace`         |
+| Sciotape                                        | `mixing-suite-sciotape`          |
+| Sciotube                                        | `mixing-suite-sciotube`          |
+| Scionaugh Website, website                      | `website`                        |
+
+### Resolving items
+
+When the user says an item is done (e.g. "mark X done on ScioGlue's todo"), move the line from `## Open` to `## Done`, change `- [ ]` to `- [x]`, and append the completion date.
+
+### Dashboard integration
+
+Open todo items are surfaced in the Daily Dashboard (see above) and in daily logs, but `TODO.md` files themselves are only updated via quick-capture or explicit resolution requests — never auto-cleared during a check-in.
 
 ## Version Planning — Context Update Rule
 
@@ -79,6 +120,9 @@ Every time a daily dashboard or project overview is generated:
 
 ### Blocked
 [blocked items]
+
+### Open Todos
+[open todo items per project, from TODO.md files]
 
 ### Notes
 [anything flagged or noteworthy from this check-in]
