@@ -33,3 +33,17 @@ master-tracker/
 
 - Projects may have one or both CONTEXT files depending on whether they have a chat and/or coding component
 - If a project is chat-only, `code-CONTEXT.md` can be omitted (and vice versa)
+
+## Version Planning — Context Update Rule
+
+When reading CONTEXT files during a daily check-in or evaluation, if any file contains the line `CONTEXT UPDATE NEEDED`, flag it prominently in the dashboard like this:
+
+> ⚠️ **[project-name]** — Context update needed for version X. Run the new-version prompts in the relevant chats, then ask me to update the files.
+
+Do not clear the `CONTEXT UPDATE NEEDED` flag automatically. Only remove it when explicitly asked to update that CONTEXT file with new content.
+
+## Auto-Update Notes
+
+- STATUS.md files for the Mixing Suite are auto-updated on every git commit via `scripts/update-tracker.sh`
+- To start version planning: run `./scripts/new-version.sh <version>` from the Mixing Suite project root
+- CONTEXT files are never auto-updated — they require a deliberate update prompt run in the relevant chat
