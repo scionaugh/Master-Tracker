@@ -1,16 +1,15 @@
 # Mixing Suite
 
 **Last Updated:** 2026-06-12
-**Status:** ACTIVE — EQ UI v2 implementation pending
+**Status:** ACTIVE — EQ UI v2 complete, parameter tuning next
 
 ## Current Focus
-All four original plugins (ScioTube, ScioTape, ScioGlue, ScioSpace) at beta v2 with stochastic noise implementation complete. Both new EQ plugins (ScionaughEQ and ScionaughEQP) have working prototypes. UI v2 specs and implementation prompts written 2026-06-12 — next step is running those Claude Code sessions.
+All four original plugins (ScioTube, ScioTape, ScioGlue, ScioSpace) at beta v2 with stochastic noise implementation complete. Both EQ plugins (ScionaughEQ and ScionaughEQP) have UI v2 complete as of 2026-06-12. Next focus: parameter tuning pass across all plugins and telemetry redesign.
 
 ## Next Actions
-- Run ScioEQ_UI2_Prompt.md in Claude Code (Sonnet 4.6) — spectrum analyser, resonance detection, M/S gradient curve
-- Run ScioEQP_UI2_Prompt.md in Claude Code (Sonnet 4.6) — spectrum analyser, analyser settings overlay
-- Test all four original plugins after stochastic noise implementation
-- Log issues and feed back into next development cycle
+- Parameter tuning pass across all six plugins: identify unusable zones, consider 15%-extreme-zone parametric mapping
+- Telemetry redesign: session-based snapshots, delta check, retention/purge (fix foundation before event logging)
+- Test all six plugins and log issues
 
 ## Blockers
 <!-- Leave blank if none -->
