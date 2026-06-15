@@ -15,9 +15,10 @@ VST beta v2 created and installed with stochastic noise implementation and UI up
 <!-- Leave blank if none -->
 
 
+
 ## Recent Commits
-- 2026-06-15 · 1538a80 · ScioGlue Phase G: numeric GR readout on the GR trace
-- 2026-06-15 · 632cfbc · ScioEQP Phase F: reconcile LF selector to 5 positions; mark 200 Hz PROVISIONAL
-- 2026-06-15 · 998266c · ScioEQ Phase E: author factory preset set (9 presets)
-- 2026-06-15 · efe3464 · ScioTape Phase D: wire latency-compensated dry/wet Mix
-- 2026-06-15 · eb4d688 · ScioMB Phase C: explicit '×' remove glyph on saturator cards
+- 2026-06-15 · fe9eba9 · feat(transformer): selectable voicing on ScioGlue + ScioEQ + ScioEQP via shared TransformerSat
+- 2026-06-15 · 6b8345b · feat(naming): codename tube/tape/transformer models across UI (index-stable, no real names in binary)
+- 2026-06-15 · 5d9627d · chore: gitignore large HRTF dataset zip (exceeds GitHub 100MB limit)
+- 2026-06-15 · 0597cb5 · docs: phase-mode research + naming convention + EQ/MB note updates
+- 2026-06-15 · b63fa9e · docs: add public naming convention (codename system)
