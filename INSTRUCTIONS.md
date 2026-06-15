@@ -62,6 +62,9 @@ If the project is ambiguous or not named, ask which project before filing.
 | Sound Science Course                            | `lms-sound-science-course`       |
 | Mixing Suite (suite-level)                      | `mixing-suite`                   |
 | ScioGlue                                        | `mixing-suite-scioglue`          |
+| ScioEQ, ScionaughEQ                             | `mixing-suite-scioeq`            |
+| ScioEQP, ScionaughEQP                           | `mixing-suite-scioeqp`           |
+| ScioMB, ScionaughMB, Multiband                  | `mixing-suite-sciomb`            |
 | ScioSpace                                       | `mixing-suite-sciospace`         |
 | Sciotape                                        | `mixing-suite-sciotape`          |
 | Sciotube                                        | `mixing-suite-sciotube`          |

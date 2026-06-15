@@ -1,18 +1,25 @@
 # Mixing Suite
 
-**Last Updated:** 2026-06-12
-**Status:** ACTIVE — EQ UI v2 complete, parameter tuning next
+**Last Updated:** 2026-06-15
+**Status:** ACTIVE — 7 plugins; 4 original + 2 EQ at v2, ScioMB DSP+UI v1 committed, ScioMB v2 spec'd
 
 ## Current Focus
-All four original plugins (ScioTube, ScioTape, ScioGlue, ScioSpace) at beta v2 with stochastic noise implementation complete. Both EQ plugins (ScionaughEQ and ScionaughEQP) have UI v2 complete as of 2026-06-12. Next focus: parameter tuning pass across all plugins and telemetry redesign.
+Suite spans seven plugins. The four original plugins (ScioTube, ScioTape, ScioGlue, ScioSpace) are at beta v2 with stochastic noise complete. Both EQs (ScionaughEQ, ScionaughEQP) have prototype + UI v2 complete (2026-06-12). ScionaughMB (multiband) now has DSP (P0-P8) and UI v1 (U0-U5) committed to git (cc69c22); a v2 upgrade spec (4-way dynamics, 3-slot sat stack, threshold-on-bar) is written but uncommitted, with code still lagging the notes. Suite-level next focus: parameter tuning pass and telemetry redesign.
 
 ## Next Actions
-- Parameter tuning pass across all six plugins: identify unusable zones, consider 15%-extreme-zone parametric mapping
+- ScioMB: finish U6 + run U-phase tests, then build v2 from `ScioMB_v2_CodePrompts.md`
+- Parameter tuning pass across all plugins: identify unusable zones, consider 15%-extreme-zone parametric mapping
 - Telemetry redesign: session-based snapshots, delta check, retention/purge (fix foundation before event logging)
-- Test all six plugins and log issues
+- ScioEQ/ScioEQP: parameter tuning + integration testing; resolve EQP 12AU7 / LF-freq reconciliations
+- Test all plugins and log issues
 
 ## Blockers
 <!-- Leave blank if none -->
 
+
 ## Recent Commits
-<!-- Auto-updated on each Mixing Suite git commit -->
+- 2026-06-15 · 6b037c6 · ScionaughMB v2 (V1–V6): 4-way dynamics, 3-slot sat stack, threshold-on-bar
+- 2026-06-14 · cc69c22 · ScionaughMB: DSP P0-P8 + UI U0-U5; EQ/EQP added to principles doc
+- 2026-06-12 · c35de02 · Fix update-tracker.sh bash 3.2 compat (declare -A); add windows build prompt
+- 2026-06-12 · 7d98894 · pre-windows-build sync
+- 2026-06-12 · d5af88d · ScionaughEQ v0.1 (Phases 0–2): ZDF SVF DSP + full styled editor

@@ -5,6 +5,44 @@ A vertical spatialiser that places sounds convincingly from Tailbone (−90°) t
 
 ## Key Decisions Made
 
+## Convolution Reverb Module (beta v3, finalized 2026-06-11)
+
+**Mid channel must remain untouched** - same core constraint as the rest of ScioSpace. Reverb processing is confined to the side channel (Mono-Safe mode) or a ducked mid channel (Expanded mode).
+
+**Engine:** `juce::dsp::Convolution`. Non-uniform partitioned convolution for the Scoring Stage IR (long tail), zero-latency for Plate and Wood Room (short tails).
+
+**Two-mode routing toggle:**
+- Mono-Safe: side channel only, reverb cancels in mono
+- Expanded: ducked mid channel (envelope-follower based), reverb audible in mono
+
+**IR switching:** dropdown selection (Off / Plate / Wood Room / Scoring Stage), no continuous morphing. A 5-10ms fade on switch avoids clicks. Loudness matched across all IRs so switching rooms doesn't cause level jumps.
+
+**"Acoustic Material" continuous slider - dropped.** IR selection is dropdown-only, no morphing between IRs.
+
+**Pre-delay and ducking are hardcoded per room** (no exposed user controls). Ducking attack is fixed at 2ms across all rooms (transient-driven, room-independent). Pre-delay and ducking release scale with each IR's length (room-dependent, not tempo-dependent - transients like kick/hi-hat don't change shape with BPM):
+
+| Room (IR) | IR length | Pre-delay | Ducking attack | Ducking release |
+|---|---|---|---|---|
+| Plate (mono-safe) | 35ms | 5ms | 2ms | 50ms |
+| Wood Room (borderline) | 80ms | 10ms | 2ms | 120ms |
+| Scoring Stage (wide) | 600ms | 30ms | 2ms | 400ms |
+
+**Mono-safe indicator - single threshold, folded into the wireframe room UI** (see UI design below), not a separate three-tier light. Mono-safe = corr > 0.7.
+
+**IR pre-processing requirements:** coincident capture, HPF at 150 Hz baked in, truncated to 2048-4096 samples, no modulation.
+
+**Plugin targets mix-bus use at 96kHz.**
+
+### UI Design (finalized 2026-06-11)
+
+Top bar: existing ScioSpace branding and preset dropdown, plus a new Room dropdown (Off / Plate / Wood Room / Scoring Stage) and a two-position Mono-Safe/Expanded toggle.
+
+XY pad (left ~60%): unchanged grid, axis labels, corner rivets, and brass puck for pan/elevation/wideness. When a room is selected, a wireframe box appears centered on the puck. Box size follows a log scale (small for Plate, medium for Wood Room, near-pad-width for Scoring Stage). Outline is solid for mono-safe rooms, dashed for non-mono-safe. The pad acts as a window into a larger space - anything the box extends past the pad edges simply isn't drawn (no clamping/repositioning). Selecting "Off" removes the box. Switching rooms animates the box to its new size over ~150-200ms, timed with the audio crossfade.
+
+Vectorscope + correlation meter (right ~40%): visually unchanged, but the correlation meter now reflects live post-processing correlation including the reverb's contribution - doubles as real-time mono-compatibility feedback for the current room + position combination.
+
+Bottom knob row: unchanged (Wideness, HRTF, Noise, Depth).
+
 **Architecture derived from reverse-engineering Plutonium XTra**, not from the original research paper. The paper proposed HRTF high-frequency notching (5–10 kHz); measurement revealed the actual mechanism is low-frequency side-channel phase/amplitude manipulation (5–200 Hz only, flat above).
 
 **Three-component architecture (side channel only, mid untouched):**
@@ -33,3 +71,5 @@ A vertical spatialiser that places sounds convincingly from Tailbone (−90°) t
 - Phase 2 HRTF notch: implemented in beta v2 using a parametric model (not CIPIC database). Whether CIPIC data would improve accuracy is a future question
 - Body position: implemented as continuous XY pad parameter
 - No SI specification document exists for ScioSpace — the decorrelation noise is handled separately from the Aliveness SI system
+- Mono-safe threshold (corr > 0.7) is provisional - needs verification against real mix-bus material before finalizing
+- IR library licensing not yet resolved for any third-party assets beyond the three generated prototypes (OpenAIR recommended as starting point for coincident-captured assets)
