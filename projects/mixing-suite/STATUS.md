@@ -30,9 +30,10 @@ Suite spans seven plugins. The four original plugins (ScioTube, ScioTape, ScioGl
 
 
 
+
 ## Recent Commits
+- 2026-06-15 · 53ba120 · docs: add public naming convention (codename system)
 - 2026-06-15 · 1259f2c · docs: reconcile EQ/MB notes to as-built (EQ presets/SVF; MB OS-gating + sat-stack UI)
 - 2026-06-15 · daddec7 · docs: phase-mode research (A=B finding, cramping, Vicanek matched biquad)
 - 2026-06-15 · 1a7323e · docs: mark Suite_Fixes (A-H) complete; record final gate + deferred items
 - 2026-06-15 · 1068075 · ScioSpace Phase H2: room dropdown + routing toggle + wireframe overlay
-- 2026-06-15 · 4041680 · ScioSpace Phase H1: M/S convolution rooms (mid stays untouched)
