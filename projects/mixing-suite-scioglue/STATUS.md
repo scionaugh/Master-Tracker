@@ -1,7 +1,7 @@
 # ScioGlue — Compressor
 
 **Last Updated:** 2026-06-15
-**Status:** ACTIVE — Beta v2 installed, awaiting testing
+**Status:** ACTIVE — Beta v2 installed, awaiting testing; numeric GR readout added (Phase G, 1538a80, 2026-06-15)
 
 ## Current Focus
 VST beta v2 created and installed with stochastic noise implementation and UI updates. Awaiting testing.

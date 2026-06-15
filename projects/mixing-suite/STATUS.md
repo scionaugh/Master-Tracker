@@ -28,9 +28,10 @@ Suite spans seven plugins. The four original plugins (ScioTube, ScioTape, ScioGl
 
 
 
+
 ## Recent Commits
+- 2026-06-15 · daddec7 · docs: phase-mode research (A=B finding, cramping, Vicanek matched biquad)
 - 2026-06-15 · 1a7323e · docs: mark Suite_Fixes (A-H) complete; record final gate + deferred items
 - 2026-06-15 · 1068075 · ScioSpace Phase H2: room dropdown + routing toggle + wireframe overlay
 - 2026-06-15 · 4041680 · ScioSpace Phase H1: M/S convolution rooms (mid stays untouched)
 - 2026-06-15 · 1538a80 · ScioGlue Phase G: numeric GR readout on the GR trace
-- 2026-06-15 · 632cfbc · ScioEQP Phase F: reconcile LF selector to 5 positions; mark 200 Hz PROVISIONAL
