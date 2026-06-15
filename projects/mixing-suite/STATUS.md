@@ -25,9 +25,10 @@ Suite spans seven plugins. The four original plugins (ScioTube, ScioTape, ScioGl
 
 
 
+
 ## Recent Commits
+- 2026-06-15 · 4041680 · ScioSpace Phase H1: M/S convolution rooms (mid stays untouched)
 - 2026-06-15 · 1538a80 · ScioGlue Phase G: numeric GR readout on the GR trace
 - 2026-06-15 · 632cfbc · ScioEQP Phase F: reconcile LF selector to 5 positions; mark 200 Hz PROVISIONAL
 - 2026-06-15 · 998266c · ScioEQ Phase E: author factory preset set (9 presets)
 - 2026-06-15 · efe3464 · ScioTape Phase D: wire latency-compensated dry/wet Mix
-- 2026-06-15 · eb4d688 · ScioMB Phase C: explicit '×' remove glyph on saturator cards

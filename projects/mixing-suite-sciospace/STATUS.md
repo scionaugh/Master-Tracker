@@ -1,6 +1,6 @@
 # ScioSpace — Spatialiser
 
-**Last Updated:** 2026-06-11
+**Last Updated:** 2026-06-15
 **Status:** ACTIVE — Beta v2 awaiting testing; convolution reverb module (beta v3) design finalized, ready for implementation
 
 ## Current Focus
@@ -18,8 +18,10 @@ VST beta v2 created and installed with stochastic noise implementation and UI up
 - Mono-safe threshold (corr > 0.7, used for the solid/dashed wireframe indicator) is provisional, needs verification against real mix-bus material
 - IR library licensing not yet resolved for any third-party assets beyond the three generated prototypes
 
-## Recent Commits
-<!-- Auto-updated on each Mixing Suite git commit -->
 
-## Queued Fix (2026-06-15)
-- Convolution rooms (beta v3) queued for implementation: `docs/Suite_Fixes_CodePrompts.md` Phase H (H1 M/S juce::dsp::Convolution DSP wrapper — mid untouched, per-room predelay/ducking, 3 prototype IRs already generated; H2 room dropdown + Mono-Safe/Expanded toggle + wireframe room overlay on the XY pad).
+## Recent Commits
+- 2026-06-15 · 4041680 · ScioSpace Phase H1: M/S convolution rooms (mid stays untouched)
+- 2026-06-15 · 1538a80 · ScioGlue Phase G: numeric GR readout on the GR trace
+- 2026-06-15 · 632cfbc · ScioEQP Phase F: reconcile LF selector to 5 positions; mark 200 Hz PROVISIONAL
+- 2026-06-15 · 998266c · ScioEQ Phase E: author factory preset set (9 presets)
+- 2026-06-15 · efe3464 · ScioTape Phase D: wire latency-compensated dry/wet Mix
