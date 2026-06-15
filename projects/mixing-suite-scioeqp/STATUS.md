@@ -5,7 +5,7 @@
 **Priority:** MEDIUM
 
 ## Current Focus
-First prototype complete and UI v2 complete (2026-06-12). Warm mahogany/brass palette. Passive program EQ with tube (12AU7) make-up and transformer colour via chowdsp_wdf (WBLT-warped reactive elements). UI v2 adds AbstractFifo spectrum analyser (input + output FFT), EQPAnalyserSettingsOverlay, legend (INPUT/OUTPUT only), updated display bg (#0c0600). No resonance detection, no M/S gradient. Next: parameter tuning and integration testing.
+First prototype complete and UI v2 complete (2026-06-12). Warm mahogany/brass palette. Passive program EQ: the passive LC boost/cut filter is a chowdsp_wdf Wave Digital Filter (WBLT-warped reactive elements), and tube colour comes from the EQPTubeStage push-pull makeup amp (12AX7 -> 12AU7, Koren model). NOTE: the interstage/output transformers are currently modeled as IDEAL 1:1 (elided), so there is no real transformer colour yet -- the transformer-selection todo ADDS it via the shared TransformerSat. UI v2 adds AbstractFifo spectrum analyser (input + output FFT), EQPAnalyserSettingsOverlay, legend (INPUT/OUTPUT only), updated display bg (#0c0600). No resonance detection, no M/S gradient. Next: parameter tuning and integration testing.
 
 ## Next Actions
 - Parameter tuning pass (identify unusable zones, consider 15%-extreme-zone mapping)

@@ -15,9 +15,10 @@ VST beta v2 created and installed with stochastic noise implementation and UI up
 <!-- Leave blank if none -->
 
 
+
 ## Recent Commits
-- 2026-06-15 · efe3464 · ScioTape Phase D: wire latency-compensated dry/wet Mix
-- 2026-06-15 · eb4d688 · ScioMB Phase C: explicit '×' remove glyph on saturator cards
-- 2026-06-15 · 86c937c · ScioMB Phase B: AUTO make-up chip on the focused band's gain bar
-- 2026-06-15 · 14bb4dd · ScioMB Phase A: gate OS round-trip on actual nonlinearity (idle-CPU fix)
-- 2026-06-15 · e14c990 · Suite: §2.1 modelling amendment + 7-plugin doc sweep; unified cross-plugin fixes prompt (A–H); ScioMB CPU notes
+- 2026-06-15 · 6b8345b · feat(naming): codename tube/tape/transformer models across UI (index-stable, no real names in binary)
+- 2026-06-15 · 5d9627d · chore: gitignore large HRTF dataset zip (exceeds GitHub 100MB limit)
+- 2026-06-15 · 0597cb5 · docs: phase-mode research + naming convention + EQ/MB note updates
+- 2026-06-15 · b63fa9e · docs: add public naming convention (codename system)
+- 2026-06-15 · cd8bf68 · docs: reconcile EQ/MB notes to as-built (EQ presets/SVF; MB OS-gating + sat-stack UI)

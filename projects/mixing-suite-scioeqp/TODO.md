@@ -4,7 +4,7 @@
 <!-- Format: - [ ] YYYY-MM-DD — item text -->
 
 ## Open
-- [ ] 2026-06-15 — [TRANSFORMER] Add a transformer-voicing SELECTOR (EQP already has transformer colour via chowdsp_wdf — expose voicing choice, mirror ScioMB's Transformer category). Voicings shown with coil-family codenames (Coil/Winding/Core/Spool/Tap), category label "Transformer" visible; internal slugs stay append-safe. See docs/Mixing Suite - Naming Convention.md §Transformer + ScioMB.
+- [ ] 2026-06-15 — [TRANSFORMER] Add a transformer-voicing SELECTOR using the shared TransformerSat (same as ScioGlue/ScioEQ). EQP currently has NO real transformer colour — its interstage/output transformers are ideal 1:1 (elided), so this ADDS voiced colour by replacing the ideal output transformer with a selectable voiced one. Voicings shown with coil-family codenames (Winding/Core/Coil), category label "Transformer" visible; internal slugs append-safe. See docs/Mixing Suite - Naming Convention.md §Transformer + ScioMB.
 - [ ] 2026-06-15 — [NAMING] Codename the existing/added transformer voicings (coil family) + `Codename — Descriptor` presets. See docs/Mixing Suite - Naming Convention.md.
 - [ ] 2026-06-14 — Reconcile 12AU7 params: use EQP-notes {17.0,1.35,4200,84,300}, not the ScionaughTube table values.
 - [ ] 2026-06-15 — [PHASE] Bake Vicanek matched-biquad coeffs as the DEFAULT (analog-voiced EQ = matching the analog prototype IS its identity). No separate Natural Phase mode. (Phase notes §7 ScioEQP)

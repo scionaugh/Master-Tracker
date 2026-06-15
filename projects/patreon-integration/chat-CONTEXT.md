@@ -32,7 +32,7 @@ Also introduces a monthly plugin choice mechanic: plugin-tier patrons pick one p
 ## Constraints and Dependencies
 
 - **LMS project:** Phases 12 and store.html must be complete before Patreon work starts. Auth, tier-gating, and webhook patterns are already established there — Patreon work extends them.
-- **Lemon Squeezy:** Account verification still pending — not a blocker for Patreon phases, but plugin downloads need storage bucket set up in Supabase.
+- **Lemon Squeezy:** Account APPROVED 2026-06-14 — not a blocker for Patreon phases anyway; plugin downloads still need a Supabase storage bucket set up.
 - **Patreon Creator account:** Must have tiers defined and webhook endpoint URL ready before Phase 3 can be completed end-to-end.
 - **Plugin binaries:** Must be in Supabase Storage before Phase 6 can go live.
 

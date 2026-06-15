@@ -1,66 +1,63 @@
 # 2026-06-15
 
-## Check-in — daily dashboard
+## Check-in — daily dashboard (regenerated)
 
 ### Projects
 
 #### ScioSound LMS (sciosound.com)
-**Status:** ACTIVE — Deployed on Netlify; build phases 1–11 complete. Store page (sciosound.com/members/store, Plugins + Course tabs) live and shareable with beta testers. Pricing decided. DNS migration off GoDaddy is the gating first task; Lemon Squeezy verification still pending (reply sent 2026-06-10).
+**Status:** ACTIVE — Deployed on Netlify. **No external blockers left:** Lemon Squeezy APPROVED 2026-06-14 and DNS confirmed on Netlify (verified 2026-06-15). Remaining work is all in-hand: pick email host + add MX/SPF/DKIM records (~10 min), run Phase 14 (create LS products at decided pricing, set webhook secret), set Netlify env vars. LS requires instant download-ready fulfilment; test via LS test mode, not a real card.
 
 #### Ableton Course (ScioSound LMS)
 **Status:** ACTIVE — All 18 modules scoped to template (Module 18 a placeholder); ready to build Module 1 ("The Digital Canvas").
 
 #### Sound Science Course (ScioSound LMS)
-**Status:** ACTIVE — Full 18-lesson curriculum table designed (maths/physics → audio app, YouTube hook, activity, extension). No lessons built yet; needs build order + a pilot lesson.
+**Status:** ACTIVE — Full 18-lesson curriculum table designed. No lessons built yet; needs build order + a pilot lesson.
 
 #### Scionaugh Website (scionaugh.com)
-**Status:** ACTIVE — Live; two-site split complete, mobile nav done. Placeholder waitlist forms held intentionally. Remaining: wire Formspree to booking form, generate og-image.jpg.
+**Status:** ACTIVE — Live; two-site split + mobile nav done. DNS blocker resolved. Remaining: wire Formspree booking form, generate og-image.jpg, add email/mailing-list records (shared with LMS).
 
 #### Patreon Integration
-**Status:** ACTIVE — Planning only, no code. Gated behind LMS Phase 12 + Lemon Squeezy verification; needs tier names/entitlements + delivery method decision.
+**Status:** ACTIVE — Planning only. LS no longer a blocker; now gated only by LMS Phase 12 + needing a Patreon Creator account with tiers defined.
 
-#### Mixing Suite
-**Status:** ACTIVE — 7 plugins. 4 original + 2 EQ at v2; ScioMB DSP (P0-P8) + UI v1 (U0-U5) committed (cc69c22); ScioMB v2 spec written, build next.
+#### Mixing Suite (7 plugins)
+**Status:** ACTIVE — All committed on develop. Heavy work landed 2026-06-15.
 
 | Plugin | Status | Current Focus |
 |--------|--------|---------------|
-| Sciotube | ACTIVE | Beta v2 installed — awaiting testing |
-| Sciotape | ACTIVE | Beta v2 installed — awaiting testing; Aliveness knob reposition todo |
-| ScioGlue | ACTIVE | Beta v2 installed — awaiting testing; 2 UI reposition todos |
-| ScioSpace | ACTIVE | Beta v2 awaiting testing; convolution reverb (beta v3) design finalized, ready to implement |
-| ScioEQ | ACTIVE | Prototype + UI v2 done — parameter tuning next |
-| ScioEQP | ACTIVE | Prototype + UI v2 done — tuning + 12AU7 / LF-freq reconcile |
-| ScioMB | ACTIVE | DSP P0-P8 + UI U0-U5 committed; finish U6, then build v2 |
+| Sciotube | ACTIVE | Beta v2 — awaiting testing |
+| Sciotape | ACTIVE | Beta v2 awaiting testing; dry/wet Mix wired (Phase D, efe3464) |
+| ScioGlue | ACTIVE | Beta v2 awaiting testing; numeric GR readout added (Phase G, 1538a80) |
+| ScioSpace | ACTIVE | Convolution rooms beta v3 implemented (Phase H); host tuning next |
+| ScioEQ | ACTIVE | Prototype + UI v2 done; 9 factory presets authored — tuning next |
+| ScioEQP | ACTIVE | Prototype + UI v2 done; LF selector reconciled — 12AU7 param reconcile open |
+| ScioMB | ACTIVE | v1 + v2 + post-v2 fixes all committed (6b037c6); calibration + host tuning next |
 
 ### Blocked
 
 | Project | Blocker |
 |---------|---------|
-| ScioSound LMS | sciosound.com DNS still on GoDaddy — blocks email, SSL, domain-verified sending |
-| ScioSound LMS | Lemon Squeezy verification pending — products, pricing, webhook secret blocked |
-| ScioSound LMS | Netlify env vars (SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY, LEMON_SQUEEZY_SECRET) unset until LS verified |
-| ScioSound LMS | Webhook at /api/lemon-webhook non-functional until env vars set |
-| Scionaugh Website | sciosound.com DNS transfer needed before email + mailing list setup |
+| ScioSound LMS | Webhook at /api/lemon-webhook non-functional until Netlify env vars set (part of Phase 14) |
+| ScioEQP | 12AU7 param mismatch — use EQP-notes values {17.0,1.35,4200,84,300} |
 | ScioSpace | Mono-safe threshold (corr > 0.7) provisional; IR library licensing unresolved |
-| ScioEQP | 12AU7 param mismatch + LF-freq position mismatch — reconcile against APVTS |
-| Patreon Integration | Lemon Squeezy verification + LMS Phase 12 must complete first; Patreon Creator account needed |
+| Patreon Integration | LMS Phase 12 must complete first; Patreon Creator account needed |
 
 ### Open Todos
 
 | Project | Open |
 |---------|------|
-| ScioSound LMS | 1 (+sub-items: email, mailing list, founding-member discount) |
+| ScioSound LMS | 3 |
 | Scionaugh Website | 1 |
-| Mixing Suite | 2 |
-| ScioGlue | 2 |
-| Sciotape | 1 |
-| ScioSpace | 10 |
-| ScioEQP | 2 |
-| ScioMB | 3 |
+| Mixing Suite | 4 |
+| ScioGlue | 4 |
+| Sciotape | 2 |
+| Sciotube | 1 |
+| ScioSpace | 2 |
+| ScioEQ | 6 |
+| ScioEQP | 7 |
+| ScioMB | 9 |
 | Patreon Integration | 4 |
 
 ### Notes
-- ScioMB STATUS reconciled: git shows DSP P0-P8 **and** UI U0-U5 committed (cc69c22); the prior STATUS said "UI next." A v2 upgrade spec (4-way dynamics, 3-slot sat stack, threshold-on-bar) is written but UNCOMMITTED and the code lags the notes — next ScioMB session = build v2 via the phased prompts. ScioMB is the first suite plugin to intentionally break the strict physical-modeling rule (documented exception, principles §2.1).
-- ScioSpace carries the largest open-todo load (convolution reverb beta v3 implementation, 10 items).
-- LMS critical path is unchanged and external: DNS off GoDaddy + Lemon Squeezy verification gate everything payment- and email-related.
+- **LMS launch path cleared today:** Lemon Squeezy approved (2026-06-14) + DNS already on Netlify (verified 2026-06-15, NS1 nameservers + Netlify SOA). No MX records exist yet, so email is the one piece still to set up — but that's adding records, not a migration.
+- Mixing Suite: ScioMB carries the largest open-todo load (9); calibration + host verification is the work front now that v2 + post-v2 fixes are committed.
 - No HIGH priority projects set; all treated as MEDIUM.

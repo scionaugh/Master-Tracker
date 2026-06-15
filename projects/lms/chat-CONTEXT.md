@@ -46,7 +46,7 @@ Full-control member platform at sciosound.com. Music production course delivered
 
 ## Constraints and Dependencies
 - **scionaugh.com (website project):** store.html rework on the website depends on sciosound.com/store being built here first
-- **Lemon Squeezy:** account under verification — product creation and webhook setup blocked until approved
+- **Lemon Squeezy:** account APPROVED 2026-06-14 — product creation + webhook setup now unblocked. Constraint: orders must be download-ready instantly (no time-based fulfilment); use test mode for test purchases.
 - **Supabase email confirmation:** disabled during Phase 3 testing — MUST be re-enabled before launch. Part of Phase 12 (security hardening), which is flagged as non-optional before launch
 - **Plugin code signing:** required before public launch (Apple Developer Program for Mac, certificate for Windows)
 

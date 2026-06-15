@@ -12,7 +12,7 @@ scionaugh.com is fully advertisement/marketing only. Placeholder waitlist forms 
 - Generate og-image.jpg (1200x630) for social sharing meta tag
 
 ## Blockers
-- sciosound.com DNS transfer needed before email + mailing list setup can begin
+- ~~sciosound.com DNS transfer needed~~ RESOLVED 2026-06-15: DNS already on Netlify. Email + mailing list just need MX/SPF/DKIM records added (pending email-host + list-platform choice).
 
 
 

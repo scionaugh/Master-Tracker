@@ -13,6 +13,5 @@ Planning phase — no code written yet. Starts after LMS Phase 12 (security hard
 - Begin Phase 1 (schema) once LMS pre-launch work is done
 
 ## Blockers
-- Lemon Squeezy account still under verification
 - LMS Phase 12 (security hardening) must complete first
 - Patreon Creator account needed with tiers defined
