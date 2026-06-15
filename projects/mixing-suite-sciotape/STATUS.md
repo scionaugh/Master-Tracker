@@ -16,3 +16,6 @@ VST beta v2 created and installed with stochastic noise implementation and UI up
 
 ## Recent Commits
 <!-- Auto-updated on each Mixing Suite git commit -->
+
+## Queued Fix (2026-06-15)
+- Wire the dead dry/wet Mix knob (latency-compensated DryWetMixer, principles §2.4): `docs/Suite_Fixes_CodePrompts.md` Phase D.

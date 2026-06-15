@@ -18,3 +18,6 @@ First prototype complete and UI v2 complete (2026-06-12). Warm mahogany/brass pa
 
 ## Recent Commits
 <!-- Auto-updated on each Mixing Suite git commit -->
+
+## Queued Fix (2026-06-15)
+- Make all 5 LF selector positions functional (provisional 200 Hz cap via C∝1/f trend; reconcile dsp_notes to 5): `docs/Suite_Fixes_CodePrompts.md` Phase F. Exact 200 Hz cap stays a later [CALIBRATE] item.

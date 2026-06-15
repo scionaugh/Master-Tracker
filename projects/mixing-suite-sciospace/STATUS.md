@@ -20,3 +20,6 @@ VST beta v2 created and installed with stochastic noise implementation and UI up
 
 ## Recent Commits
 <!-- Auto-updated on each Mixing Suite git commit -->
+
+## Queued Fix (2026-06-15)
+- Convolution rooms (beta v3) queued for implementation: `docs/Suite_Fixes_CodePrompts.md` Phase H (H1 M/S juce::dsp::Convolution DSP wrapper — mid untouched, per-room predelay/ducking, 3 prototype IRs already generated; H2 room dropdown + Mono-Safe/Expanded toggle + wireframe room overlay on the XY pad).

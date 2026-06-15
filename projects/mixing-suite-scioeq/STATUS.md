@@ -17,3 +17,6 @@ First prototype complete and UI v2 complete (2026-06-12). Cold icy blue-white pa
 
 ## Recent Commits
 <!-- Auto-updated on each Mixing Suite git commit -->
+
+## Queued Fix (2026-06-15)
+- Author the factory preset set (table is currently only 'Flat'): `docs/Suite_Fixes_CodePrompts.md` Phase E.

@@ -16,3 +16,6 @@ VST beta v2 created and installed with stochastic noise implementation and UI up
 
 ## Recent Commits
 <!-- Auto-updated on each Mixing Suite git commit -->
+
+## Queued Fix (2026-06-15)
+- Add the numeric gain-reduction readout from currentGrDb: `docs/Suite_Fixes_CodePrompts.md` Phase G.

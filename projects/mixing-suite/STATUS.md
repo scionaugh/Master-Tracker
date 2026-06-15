@@ -17,9 +17,10 @@ Suite spans seven plugins. The four original plugins (ScioTube, ScioTape, ScioGl
 <!-- Leave blank if none -->
 
 
+
 ## Recent Commits
+- 2026-06-15 · e14c990 · Suite: §2.1 modelling amendment + 7-plugin doc sweep; unified cross-plugin fixes prompt (A–H); ScioMB CPU notes
 - 2026-06-15 · 6b037c6 · ScionaughMB v2 (V1–V6): 4-way dynamics, 3-slot sat stack, threshold-on-bar
 - 2026-06-14 · cc69c22 · ScionaughMB: DSP P0-P8 + UI U0-U5; EQ/EQP added to principles doc
 - 2026-06-12 · c35de02 · Fix update-tracker.sh bash 3.2 compat (declare -A); add windows build prompt
 - 2026-06-12 · 7d98894 · pre-windows-build sync
-- 2026-06-12 · d5af88d · ScionaughEQ v0.1 (Phases 0–2): ZDF SVF DSP + full styled editor
