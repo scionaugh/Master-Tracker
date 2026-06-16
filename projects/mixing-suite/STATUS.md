@@ -42,9 +42,10 @@ Suite spans seven plugins. The four original plugins (ScioTube, ScioTape, ScioGl
 
 
 
+
 ## Recent Commits
+- 2026-06-16 · 13a05bd · feat(compressor): add diode-bridge topology ported from ScioMB
 - 2026-06-16 · 1d0a329 · feat(compressor): show sidechain input as a third trace on the GR scope
 - 2026-06-16 · 1fddfbb · feat(compressor): sidechain HPF + listen monitor
 - 2026-06-16 · 444ee60 · feat(compressor): external sidechain input bus + detection routing
 - 2026-06-16 · 9d1760f · fix(compressor): apply attack once (instant-peak detector + single gain pole) so the ms knob is accurate
-- 2026-06-16 · eb4c666 · docs(compressor): spec attack-fix + external sidechain + diode-bridge; add ScioGlue test scaffold
