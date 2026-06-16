@@ -1,6 +1,6 @@
 # ScioSpace — Spatialiser
 
-**Last Updated:** 2026-06-15
+**Last Updated:** 2026-06-16
 **Status:** ACTIVE — Beta v2 awaiting testing; convolution rooms (beta v3) IMPLEMENTED on develop (Phase H); host tuning next
 
 ## Current Focus
@@ -20,9 +20,10 @@ VST beta v2 created and installed with stochastic noise implementation and UI up
 
 
 
+
 ## Recent Commits
-- 2026-06-15 · 1068075 · ScioSpace Phase H2: room dropdown + routing toggle + wireframe overlay
-- 2026-06-15 · 4041680 · ScioSpace Phase H1: M/S convolution rooms (mid stays untouched)
-- 2026-06-15 · 1538a80 · ScioGlue Phase G: numeric GR readout on the GR trace
-- 2026-06-15 · 632cfbc · ScioEQP Phase F: reconcile LF selector to 5 positions; mark 200 Hz PROVISIONAL
-- 2026-06-15 · 998266c · ScioEQ Phase E: author factory preset set (9 presets)
+- 2026-06-16 · 725e487 · chore: build VST3 only (drop AU format from all plugins)
+- 2026-06-16 · c967b3a · chore(compressor): add diode + sidechain factory presets; automated QA; flag presets for re-audition
+- 2026-06-16 · 52399ee · feat(compressor): diode-bridge model selector + panel
+- 2026-06-16 · 13a05bd · feat(compressor): add diode-bridge topology ported from ScioMB
+- 2026-06-16 · 1d0a329 · feat(compressor): show sidechain input as a third trace on the GR scope

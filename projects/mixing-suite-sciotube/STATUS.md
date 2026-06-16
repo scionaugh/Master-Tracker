@@ -1,6 +1,6 @@
 # Sciotube — Thermionic Tube Saturator
 
-**Last Updated:** 2026-06-15
+**Last Updated:** 2026-06-16
 **Status:** ACTIVE — Beta v2 installed, awaiting testing
 
 ## Current Focus
@@ -15,9 +15,10 @@ VST beta v2 created and installed with stochastic noise implementation and UI up
 <!-- Leave blank if none -->
 
 
+
 ## Recent Commits
-- 2026-06-15 · 6b8345b · feat(naming): codename tube/tape/transformer models across UI (index-stable, no real names in binary)
-- 2026-06-15 · 5d9627d · chore: gitignore large HRTF dataset zip (exceeds GitHub 100MB limit)
-- 2026-06-15 · 0597cb5 · docs: phase-mode research + naming convention + EQ/MB note updates
-- 2026-06-15 · b63fa9e · docs: add public naming convention (codename system)
-- 2026-06-15 · cd8bf68 · docs: reconcile EQ/MB notes to as-built (EQ presets/SVF; MB OS-gating + sat-stack UI)
+- 2026-06-16 · 725e487 · chore: build VST3 only (drop AU format from all plugins)
+- 2026-06-16 · c967b3a · chore(compressor): add diode + sidechain factory presets; automated QA; flag presets for re-audition
+- 2026-06-16 · 52399ee · feat(compressor): diode-bridge model selector + panel
+- 2026-06-16 · 13a05bd · feat(compressor): add diode-bridge topology ported from ScioMB
+- 2026-06-16 · 1d0a329 · feat(compressor): show sidechain input as a third trace on the GR scope

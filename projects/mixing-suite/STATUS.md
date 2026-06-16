@@ -45,9 +45,10 @@ Suite spans seven plugins. The four original plugins (ScioTube, ScioTape, ScioGl
 
 
 
+
 ## Recent Commits
+- 2026-06-16 · 725e487 · chore: build VST3 only (drop AU format from all plugins)
 - 2026-06-16 · c967b3a · chore(compressor): add diode + sidechain factory presets; automated QA; flag presets for re-audition
 - 2026-06-16 · 52399ee · feat(compressor): diode-bridge model selector + panel
 - 2026-06-16 · 13a05bd · feat(compressor): add diode-bridge topology ported from ScioMB
 - 2026-06-16 · 1d0a329 · feat(compressor): show sidechain input as a third trace on the GR scope
-- 2026-06-16 · 1fddfbb · feat(compressor): sidechain HPF + listen monitor
