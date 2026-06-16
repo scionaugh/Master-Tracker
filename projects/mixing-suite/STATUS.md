@@ -1,6 +1,6 @@
 # Mixing Suite
 
-**Last Updated:** 2026-06-15
+**Last Updated:** 2026-06-16
 **Status:** ACTIVE — 7 plugins; 4 original + 2 EQ at v2, ScioMB DSP+UI v1 committed, ScioMB v2 spec'd
 
 ## Current Focus
@@ -37,9 +37,10 @@ Suite spans seven plugins. The four original plugins (ScioTube, ScioTape, ScioGl
 
 
 
+
 ## Recent Commits
+- 2026-06-16 · eb4c666 · docs(compressor): spec attack-fix + external sidechain + diode-bridge; add ScioGlue test scaffold
 - 2026-06-15 · 2b118f0 · refactor(telemetry): session snapshots + delta send + retention cap + sendEvent foundation
 - 2026-06-15 · c5d0089 · fix(naming): drop old-name->codename slug map (IP leak); rely on index-stable restore
 - 2026-06-15 · fe9eba9 · feat(transformer): selectable voicing on ScioGlue + ScioEQ + ScioEQP via shared TransformerSat
 - 2026-06-15 · 6b8345b · feat(naming): codename tube/tape/transformer models across UI (index-stable, no real names in binary)
-- 2026-06-15 · 5d9627d · chore: gitignore large HRTF dataset zip (exceeds GitHub 100MB limit)
