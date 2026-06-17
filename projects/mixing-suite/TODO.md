@@ -4,10 +4,11 @@
 <!-- Format: - [ ] YYYY-MM-DD — item text -->
 
 ## Open
-- [ ] 2026-06-15 — [NAMING][suite-wide] Roll out the public naming convention to ALL plugins: tube=glow/light codenames, tape=warm-tone codenames, transformer voicings=coil-family codenames; generic category words (Tube/Tape/Transformer) stay visible, real model/voicing names hidden; compressor topologies stay plain (not codenamed); presets as `Codename — Descriptor`. Real-name map stays only in PRIVATE Master Key. Per-plugin items filed under each project. See docs/Mixing Suite - Naming Convention.md.
-- [ ] 2026-06-15 — [TRANSFORMER][suite-wide] Add transformer-voicing selection to the compressor (ScioGlue) and EQ modules (ScioEQ, ScioEQP), mirroring ScioMB's Transformer saturation category.
-- [ ] 2026-06-10 — Parameter tuning pass across all four plugins: go through every parameter on each plugin to identify and rule out "unusable zones." Considering a parametric mapping approach where the last ~15% of a knob's travel pushes into a "crazy distortion" extreme zone, to be tested before finalising ranges/curves.
-
-- [ ] 2026-06-11 — [Future beta] Right-click knob feedback: in-plugin overlay lets users leave contextual feedback on any parameter. Spec: `feature-knob-feedback.md`. Depends on telemetry redesign shipping first.
+- [ ] 2026-06-17 — [NEXT-BETA] Unified next-beta build, all 7 plugins, work in Plugins/Shared. Spec: docs/next_beta_unified_spec.md (telemetry detail: docs/telemetry_feedback_spec.md). Workstreams: (1) telemetry + in-plugin feedback w/ scalar signal snapshot; (2) shared settings page = global (consent/data, export OS, auto-update) in ScioSound config file + per-instance playback OS (2x default); (3) oversampling export-vs-playback via isNonRealtime, standardize EQP/Tube/Tape/MB/Glue; (4) opt-in background staged auto-update + state migration + signing; (5) metal visual pass (flat-top knurled knob, top-right light, no specular, cache body); (6) per-plugin WHOLE-METAL colours (each plugin already has an accent in code): ScioGlue->red, ScioSpace->light blue, ScioMB purple, rest keep; resolve EQ/Space blue clash + EQP/Tape/Tube amber cluster.
+- [ ] 2026-06-17 — [NEXT-BETA][EQP] Control-consistency fix: high-boost uses left/right drag while low-freq uses up/down; make high-boost vertical (up/down) like the low. Check all EQP controls. (spec §6a)
+- [ ] 2026-06-17 — [NEXT-BETA][EQ] HPF/LPF slope selector 12/24/36/48 dB/oct (cascade SVF stages; update SVFBand::response for display). (spec §6b)
+- [ ] 2026-06-17 — [NEXT-BETA][EQ] Resonance-display sensitivity knob (0-100%) in Analyser Settings overlay; 0%=off, 100%=catch hat/kick transient resonances; map to prominence threshold + floor + confidence; use faster/peak-hold spectrum at high sens. (spec §6b)
+- [ ] 2026-06-17 — [NEXT-BETA][UNDO] Per-instance undo/redo: add juce::UndoManager -> APVTS (all 7 built with nullptr now); beginNewTransaction() at existing beginChangeGesture sites; shared Undo/Redo buttons; audit non-APVTS state; scope to user gestures. (spec §6c)
+- [ ] 2026-06-17 — [NEXT-BETA] Version 0.2.0 / β3 (kBetaNumber=3) all 7; branch next-beta off develop. Autonomous Opus build runner: docs/prompts/next_beta_runner.md. Spec+prompts committed; user runs phases in Claude Code.
 
 ## Done
