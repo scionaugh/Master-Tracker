@@ -9,7 +9,6 @@ New suite analyzer plugin. Unified Spectrum / Scope / Stereo as tabs with a pers
 
 ## Next Actions
 - Run Phase 1 code prompt: SpectrumAnalyzer + SpectrumDisplay extraction, retrofit ScioEQ + ScioMB, with the sine-sweep + pink-noise calibration parity test
-- Confirm open decisions: D1 detach default (recommend in-window docking base + true-float opt-in), D2 PLUGIN_CODE (proposed ScSe)
 - Then Phases 2-7: scope + ScioGlue, stereo + ScioSpace, loudness module, SignalBus, ScioSee scaffold + filterbank Backend B, snapped/detach layout + bus dropdown
 - Final independent subagent audit per the prompts
 
