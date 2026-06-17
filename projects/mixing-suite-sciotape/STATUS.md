@@ -18,9 +18,10 @@ VST beta v2 created and installed with stochastic noise implementation and UI up
 
 
 
+
 ## Recent Commits
+- 2026-06-17 · e0c5380 · feat(shared): global ScioSound settings store + shared settings panel
 - 2026-06-17 · 4bb81a6 · chore(suite): branch next-beta, bump all plugins to 0.2.0 / β3
 - 2026-06-17 · 6dc047e · docs(next-beta): unified beta spec + telemetry spec + autonomous build runner
 - 2026-06-17 · 6047db0 · chore: restore AU format on all plugins (VST3 + AU)
 - 2026-06-16 · 31e86c5 · fix(compressor): presets no longer pin oversampling (user-owned global)
-- 2026-06-16 · 725e487 · chore: build VST3 only (drop AU format from all plugins)
