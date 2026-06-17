@@ -4,7 +4,7 @@
 <!-- Format: - [ ] YYYY-MM-DD — item text -->
 
 ## Open
-- [ ] 2026-06-17 — Email: sign up Zoho Mail Lite (~$1/user/mo) for hello@sciosound.com, then add MX + SPF + DKIM records in Netlify DNS (~10 min).
+- [ ] 2026-06-17 — Email DKIM: re-check verify in Zoho DNS Mapping (zmail._domainkey added in Netlify, was pending propagation). MX + SPF already verified green. Optional: add hello@/contact@ aliases to support@ mailbox.
 - [ ] 2026-06-17 — Mailing list: create Brevo account, then wire the waitlist/signup form via Brevo API.
 - [ ] 2026-06-17 — Course founding discount: in LS, keep single Complete Course at $149 list + create a capped fixed-amount code ($20 off -> $129, limited redemptions). Set during Phase 14.
 - [ ] 2026-06-17 — Plugin giveaway: in LS, create a 100%-off code scoped to the plugin product(s), capped redemptions; friends use normal checkout (code entered or pre-applied via link), $0 order still delivers download + license. Verify fulfilment with one LS test-mode redemption.
