@@ -66,6 +66,7 @@ If the project is ambiguous or not named, ask which project before filing.
 | ScioEQP, ScionaughEQP                           | `mixing-suite-scioeqp`           |
 | ScioMB, ScionaughMB, Multiband                  | `mixing-suite-sciomb`            |
 | ScioSpace                                       | `mixing-suite-sciospace`         |
+| ScioSee, ScionaughAnalyser, Analyser           | `mixing-suite-sciosee`           |
 | Sciotape                                        | `mixing-suite-sciotape`          |
 | Sciotube                                        | `mixing-suite-sciotube`          |
 | Scionaugh Website, website                      | `website`                        |
