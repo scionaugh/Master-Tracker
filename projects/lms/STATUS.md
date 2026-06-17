@@ -14,7 +14,7 @@ LMS build phases 1–11 complete. sciosound-lms repo connected to Netlify and de
 
 ## Next Actions
 - ~~Migrate sciosound.com DNS from GoDaddy to Netlify~~ DONE — verified 2026-06-15 on Netlify DNS (NS1 nameservers, SOA = domains+netlify.netlify.com)
-- Email host DECIDED 2026-06-17: Zoho Mail Lite (~$1/user/mo, has IMAP). TODO: sign up + add MX/SPF/DKIM in Netlify DNS (~10 min; no MX on domain yet)
+- ~~Email host~~ DONE 2026-06-17: Zoho Mail Lite live, support@sciosound.com; MX + SPF + DKIM all verified green in Netlify DNS
 - Mailing list DECIDED 2026-06-17: Brevo (free ~100k contacts, 300/day). TODO: create account + wire signup form via Brevo API
 - Build sciosound.com course waitlist page
 - Build sciosound.com plugin beta signup page (becomes account registration once beta is live)
