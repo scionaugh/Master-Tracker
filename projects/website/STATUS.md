@@ -11,7 +11,7 @@ scionaugh.com is fully advertisement/marketing only. Placeholder waitlist forms 
 - ~~Generate og-image.jpg (1200x630)~~ Template DONE 2026-06-17 (og-image-template.html, blocked from deploy). Still need to export the actual og-image.jpg and drop in repo root.
 - ~~Copy course outline from sciosound store into education.html~~ DONE 2026-06-17 — full 18-module / 6-stage curriculum now live in the Curriculum panel; counts + journey section updated.
 - Replace placeholder waitlist forms with links to sciosound.com when ready to direct traffic there (hold is intentional, not a dependency)
-- Commit 4eefe5b made locally on main (ahead 1) — PUSH to deploy to production when ready
+- Booking form also gained enquiry-type / event-date / location fields (commit 0f924aa). Local commits 4eefe5b + 0f924aa on main (ahead 2). USER must `git push origin main` from their machine — sandbox has no SSH keys/GitHub access. Netlify form detection confirmed ENABLED 2026-06-17.
 
 ## Blockers
 - ~~sciosound.com DNS transfer needed~~ RESOLVED 2026-06-15: DNS already on Netlify. Email + mailing list just need MX/SPF/DKIM records added (pending email-host + list-platform choice).

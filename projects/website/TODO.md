@@ -4,6 +4,7 @@
 <!-- Format: - [ ] YYYY-MM-DD — item text -->
 
 ## Open
+- [ ] 2026-06-17 — PUSH local commits (4eefe5b + 0f924aa) to origin/main from your machine: `git push origin main`. Sandbox cannot push (no SSH keys).
 - [ ] 2026-06-17 — Export og-image.jpg from og-image-template.html (open in browser → Download PNG → rename/convert to og-image.jpg in repo root). Meta tags already point to it.
 - [ ] 2026-06-17 — In Netlify dashboard, confirm the "booking" form appears under Forms and set notification email (scionaugh@gmail.com) after first deploy.
 
