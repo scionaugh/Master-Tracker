@@ -4,6 +4,10 @@
 <!-- Format: - [ ] YYYY-MM-DD — item text -->
 
 ## Open
-- [ ] 2026-06-10 — Copy across course outline from sciosound store
+- [ ] 2026-06-17 — Export og-image.jpg from og-image-template.html (open in browser → Download PNG → rename/convert to og-image.jpg in repo root). Meta tags already point to it.
+- [ ] 2026-06-17 — In Netlify dashboard, confirm the "booking" form appears under Forms and set notification email (scionaugh@gmail.com) after first deploy.
 
 ## Done
+- [x] 2026-06-17 — Wired booking form (index.html) to Netlify Forms (AJAX POST, honeypot spam guard) instead of Formspree — no third-party account needed since site is on Netlify.
+- [x] 2026-06-17 — Built og-image-template.html (1200x630, brand card, blocked from deploy in netlify.toml) for exporting og-image.jpg.
+- [x] 2026-06-17 — Copied course outline from sciosound sheet into education.html: full 18-module curriculum across 6 stages (00-05), journey section + stat counts updated to match (was 17 modules / 8 stages).
