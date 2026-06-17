@@ -1,6 +1,6 @@
 # ScioSound LMS (sciosound.com)
 
-**Last Updated:** 2026-06-11
+**Last Updated:** 2026-06-17
 **Status:** ACTIVE — Deployed on Netlify; DNS already on Netlify; Lemon Squeezy APPROVED 2026-06-14. No external blockers left — email records + Phase 14 are the remaining work.
 
 ## Current Focus
@@ -14,11 +14,11 @@ LMS build phases 1–11 complete. sciosound-lms repo connected to Netlify and de
 
 ## Next Actions
 - ~~Migrate sciosound.com DNS from GoDaddy to Netlify~~ DONE — verified 2026-06-15 on Netlify DNS (NS1 nameservers, SOA = domains+netlify.netlify.com)
-- Set up hello@sciosound.com email (Google Workspace or Zoho) + add MX/SPF/DKIM in Netlify DNS — ~10 min once host chosen; no MX records exist on the domain yet
-- Set up mailing list platform (Brevo or Mailchimp) under sciosound.com for course + plugin beta waitlists
+- Email host DECIDED 2026-06-17: Zoho Mail Lite (~$1/user/mo, has IMAP). TODO: sign up + add MX/SPF/DKIM in Netlify DNS (~10 min; no MX on domain yet)
+- Mailing list DECIDED 2026-06-17: Brevo (free ~100k contacts, 300/day). TODO: create account + wire signup form via Brevo API
 - Build sciosound.com course waitlist page
 - Build sciosound.com plugin beta signup page (becomes account registration once beta is live)
-- Create LS products (Phase 14), set decided pricing, get webhook secret — LS approved, ready to do now
+- Create LS products (Phase 14), set decided pricing, get webhook secret — LS approved. Discount mechanics DECIDED 2026-06-17: course founding = single $149 product + capped fixed-amount code ($20 off); plugin friends-giveaway = 100%-off code scoped to plugin product(s), same checkout/fulfilment (verify with LS test-mode redemption)
 - Set Netlify env vars (SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY, LEMON_SQUEEZY_SECRET) once Lemon Squeezy verified
 - Add SETUP-LOG.md to repo root
 
