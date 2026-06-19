@@ -5,12 +5,15 @@
 
 ## Open
 
-- [ ] 2026-06-17 — Mailing list: create Brevo account, then wire the waitlist/signup form via Brevo API.
+- [ ] 2026-06-17 — Brevo wiring (BLOCKED on Netlify deploy freeze): embed the form on sciosound.com via the "Simple HTML" snippet (restyle to match site). NO API key / serverless function needed. Repeat for Plugin Beta. Wire when credits reset.
+- [ ] 2026-06-17 — Brevo: create matching Plugin Beta signup form (list 2), same flow as Course Waitlist.
 - [ ] 2026-06-17 — Course founding discount: in LS, keep single Complete Course at $149 list + create a capped fixed-amount code ($20 off -> $129, limited redemptions). Set during Phase 14.
 - [ ] 2026-06-17 — Plugin giveaway: in LS, create a 100%-off code scoped to the plugin product(s), capped redemptions; friends use normal checkout (code entered or pre-applied via link), $0 order still delivers download + license. Verify fulfilment with one LS test-mode redemption.
 - Note: nothing else blocking — site live, store live, member area works end to end.
 
 ## Done
+- [x] 2026-06-17 — Brevo account created (ScioSound org, login scionaugh@gmail.com). Lists: Course Waitlist (id 3), Plugin Beta (id 2), folder 'Waitlists'.
+- [x] 2026-06-17 — Course Waitlist hosted form created (double opt-in). Public share URL (shareable NOW, independent of Netlify): https://38c7d06e.sibforms.com/serve/MUIFAAoY7cXbRDlL0LgRUAb-wYs3QjsFJtRxtU0KdIHKai9Ic00ReDBHBLNVTecxU1do3hsU9gy1BqfqEyqaHklpRvIuN2XtDnJv5Bl3eJI_cTNAQ7r-lVhuyHFwyhxzLmvPd2GySeZCDWzsx4hjAjw8-Jr8bI2YdLVPc7GKHCAgSlKMQChK2EU_8YvKfVPPQ7UrD_Zq2gFh4WTpKg==
 - [x] 2026-06-17 — EMAIL DONE: Zoho Mail Lite live, support@sciosound.com; MX + SPF + DKIM all verified green in Netlify DNS. (Optional later: hello@/contact@ aliases.)
 - [x] 2026-06-17 — DECIDED email host: Zoho Mail Lite (~$1/user/mo) over Zoho Free (web-only, no IMAP) and Google Workspace (~A$11/mo inc GST).
 - [x] 2026-06-17 — DECIDED mailing list: Brevo (free ~100k contacts, 300 emails/day); Mailchimp free tier cut to 250 contacts / 500 sends/mo Jan 2026.
