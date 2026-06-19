@@ -12,6 +12,7 @@
 - [ ] 2026-06-17 — In Netlify dashboard, confirm the "booking" form appears under Forms and set notification email (scionaugh@gmail.com) after first deploy.
 
 ## Done
+- [x] 2026-06-17 — Wired scionaugh.com waitlist forms to Brevo (committed 5110bd5, NOT pushed): education.html course form -> Course Waitlist (list 3); store.html beta form -> Plugin Beta (list 2). Native-styled HTML POST to Brevo hosted-form serve URLs (target=_blank -> Brevo confirm page). Deploys with batch on Jul 5.
 - [x] 2026-06-17 — Wired booking form (index.html) to Netlify Forms (AJAX POST, honeypot spam guard) instead of Formspree — no third-party account needed since site is on Netlify.
 - [x] 2026-06-17 — Built og-image-template.html (1200x630, brand card, blocked from deploy in netlify.toml) for exporting og-image.jpg.
 - [x] 2026-06-17 — Copied course outline from sciosound sheet into education.html: full 18-module curriculum across 6 stages (00-05), journey section + stat counts updated to match (was 17 modules / 8 stages).
