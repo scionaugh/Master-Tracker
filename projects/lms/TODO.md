@@ -4,6 +4,7 @@
 <!-- Format: - [ ] YYYY-MM-DD — item text -->
 
 ## Open
+- [ ] NETLIFY CREDITS RESET ~2026-07-05 — production deploys frozen until then; batch all changes and push on/after Jul 5.
 
 - [ ] 2026-06-17 — Brevo wiring (BLOCKED on Netlify deploy freeze): embed the form on sciosound.com via the "Simple HTML" snippet (restyle to match site). NO API key / serverless function needed. Repeat for Plugin Beta. Wire when credits reset.
 - [ ] 2026-06-17 — Course founding discount: in LS, keep single Complete Course at $149 list + create a capped fixed-amount code ($20 off -> $129, limited redemptions). Set during Phase 14.
