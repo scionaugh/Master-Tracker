@@ -6,12 +6,12 @@
 ## Open
 
 - [ ] 2026-06-17 — Brevo wiring (BLOCKED on Netlify deploy freeze): embed the form on sciosound.com via the "Simple HTML" snippet (restyle to match site). NO API key / serverless function needed. Repeat for Plugin Beta. Wire when credits reset.
-- [ ] 2026-06-17 — Brevo: create matching Plugin Beta signup form (list 2), same flow as Course Waitlist.
 - [ ] 2026-06-17 — Course founding discount: in LS, keep single Complete Course at $149 list + create a capped fixed-amount code ($20 off -> $129, limited redemptions). Set during Phase 14.
 - [ ] 2026-06-17 — Plugin giveaway: in LS, create a 100%-off code scoped to the plugin product(s), capped redemptions; friends use normal checkout (code entered or pre-applied via link), $0 order still delivers download + license. Verify fulfilment with one LS test-mode redemption.
 - Note: nothing else blocking — site live, store live, member area works end to end.
 
 ## Done
+- [x] 2026-06-17 — Plugin Beta hosted form created (double opt-in, list 2). Public share URL: https://38c7d06e.sibforms.com/serve/MUIFACYu8wSovmUxnzekUlTOXxJU6n_wbbqN1gbHDXhkZgq-Vif7gTBntVEUDRbhZP4oMHY2kM-SuNsDXiE7b01kqnrb6LxRSePiVFy9YbRJpC6fCzEmEIgrtj23HanvIuTLDACPmPeKfyKuXXsytvNhptbiV9gHdDsXExcVGmJuwCYQHDUhTdaLVkO_R2_6Opkz93KhoXOGgeFRoA==
 - [x] 2026-06-17 — Brevo account created (ScioSound org, login scionaugh@gmail.com). Lists: Course Waitlist (id 3), Plugin Beta (id 2), folder 'Waitlists'.
 - [x] 2026-06-17 — Course Waitlist hosted form created (double opt-in). Public share URL (shareable NOW, independent of Netlify): https://38c7d06e.sibforms.com/serve/MUIFAAoY7cXbRDlL0LgRUAb-wYs3QjsFJtRxtU0KdIHKai9Ic00ReDBHBLNVTecxU1do3hsU9gy1BqfqEyqaHklpRvIuN2XtDnJv5Bl3eJI_cTNAQ7r-lVhuyHFwyhxzLmvPd2GySeZCDWzsx4hjAjw8-Jr8bI2YdLVPc7GKHCAgSlKMQChK2EU_8YvKfVPPQ7UrD_Zq2gFh4WTpKg==
 - [x] 2026-06-17 — EMAIL DONE: Zoho Mail Lite live, support@sciosound.com; MX + SPF + DKIM all verified green in Netlify DNS. (Optional later: hello@/contact@ aliases.)
