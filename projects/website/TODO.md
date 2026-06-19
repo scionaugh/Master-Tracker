@@ -4,6 +4,8 @@
 <!-- Format: - [ ] YYYY-MM-DD — item text -->
 
 ## Open
+- [ ] 2026-06-17 — NETLIFY CREDITS root cause = Production deploys: 300 of 304.6 credits (20 deploys, ~15 credits/deploy). NOT telemetry (Supabase), NOT Agent Runners (0), bandwidth/web-requests trivial. DECISION: wait for billing reset + BATCH deploys (one push per session). Check reset date in Billing.
+- [ ] 2026-06-17 — Booking form deployed but submissions BLOCKED until credit reset (live form shows fake "Got it", loses enquiries). Pending unpushed commits incl. subject-line + res.ok hardening (02f7eca) deploy on reset. Then set Forms notification email (scionaugh@gmail.com) + test.
 - [ ] 2026-06-17 — PUSH local commits (4eefe5b, 0f924aa, 72a993b) to origin/main from your machine: `git push origin main`. Sandbox cannot push (no SSH keys).
 - [ ] 2026-06-17 — After deploy: add email notification (scionaugh@gmail.com) under Netlify > Project configuration > Notifications > Form submission notifications.
 - [ ] 2026-06-17 — In Netlify dashboard, confirm the "booking" form appears under Forms and set notification email (scionaugh@gmail.com) after first deploy.
