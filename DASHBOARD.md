@@ -19,7 +19,7 @@
 #### Patreon Integration
 **Status:** ACTIVE — Planning only. LS no longer a blocker; now gated only by LMS Phase 12 + needing a Patreon Creator account with tiers defined.
 
-#### Mixing Suite (7 plugins)
+#### Mixing Suite (9 plugins) — **0.2.0 · β5 (0.2 line COMPLETE)**; next = 0.3.0
 **Status:** ACTIVE — All committed on develop. Heavy work landed 2026-06-15.
 
 | Plugin | Status | Current Focus |
