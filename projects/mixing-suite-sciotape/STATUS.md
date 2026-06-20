@@ -34,9 +34,10 @@ VST beta v2 created and installed with stochastic noise implementation and UI up
 
 
 
+
 ## Recent Commits
-- 2026-06-20 · 92c0468 · refactor(suite): 0.3 Round 1, shared foundation
-- 2026-06-20 · a5ba16e · docs(suite): open 0.3.0 development - reconcile Round 1 prompt to beta5/develop base
-- 2026-06-20 · ce26f9a · chore(suite): 0.2 close-out - Round 10 knob coherence + beta5 + branch/version model
-- 2026-06-20 · 20fc50a · feat(suite): UI Round 9 — Mix comb-filter DSP fix + remaining Round 8 UI + review fixes, β3→β4 (§30)
-- 2026-06-19 · fa3c39a · feat(suite): UI Round 8 — ScioGlue bottom recompose, Tape darken+plate, Tube trace glow, EQP puck, EQ panel (§29)
+- 2026-06-20 · 155ccb3 · feat(tape): v0.3 Round 5.1 — ScioTape faceplate UI redesign + EQ-control prototype
+- 2026-06-20 · aa7697f · feat(eqp): restore Drive + Dry/Wet to the output row; wider, better-spaced tubes
+- 2026-06-20 · c9f8525 · docs(eq): bring ScioEQ + suite docs current to v0.3 R3 (β7)
+- 2026-06-20 · 008d019 · docs(eqp): bring manual, math, DSP notes + QA checklist up to v0.3 (R2 + R2b)
+- 2026-06-20 · bd636d9 · feat(eq): v0.3 Round 3 — ScioEQ external sidechain + overlay + band-matched dynamics

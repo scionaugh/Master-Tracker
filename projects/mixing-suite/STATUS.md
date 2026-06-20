@@ -103,9 +103,10 @@ Suite spans eight plugins (ScioSee added as the eighth). The four original plugi
 
 
 
+
 ## Recent Commits
+- 2026-06-20 · 155ccb3 · feat(tape): v0.3 Round 5.1 — ScioTape faceplate UI redesign + EQ-control prototype
 - 2026-06-20 · aa7697f · feat(eqp): restore Drive + Dry/Wet to the output row; wider, better-spaced tubes
 - 2026-06-20 · c9f8525 · docs(eq): bring ScioEQ + suite docs current to v0.3 R3 (β7)
 - 2026-06-20 · 008d019 · docs(eqp): bring manual, math, DSP notes + QA checklist up to v0.3 (R2 + R2b)
 - 2026-06-20 · bd636d9 · feat(eq): v0.3 Round 3 — ScioEQ external sidechain + overlay + band-matched dynamics
-- 2026-06-20 · 8ff7fbe · feat(eqp): slimmer ScioEQP FREQ-slider caps (half thickness, quarter-width rim)
