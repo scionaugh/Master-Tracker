@@ -1,6 +1,6 @@
 # Scionaugh Website (scionaugh.com)
 
-**Last Updated:** 2026-06-17
+**Last Updated:** 2026-06-19
 **Status:** ACTIVE — Live, two-site split complete, placeholder waitlist forms in place
 
 ## Current Focus
@@ -10,6 +10,7 @@ scionaugh.com is fully advertisement/marketing only. Placeholder waitlist forms 
 - ~~Wire Formspree to booking form on index.html~~ DONE 2026-06-17 — used Netlify Forms instead (site is on Netlify, no 3rd-party account). After first deploy, confirm form shows in Netlify dashboard + set notification email.
 - ~~Generate og-image.jpg (1200x630)~~ Template DONE 2026-06-17 (og-image-template.html, blocked from deploy). Still need to export the actual og-image.jpg and drop in repo root.
 - ~~Copy course outline from sciosound store into education.html~~ DONE 2026-06-17 — full 18-module / 6-stage curriculum now live in the Curriculum panel; counts + journey section updated.
+- 2026-06-19 — PLUGIN SUITE GREW 4 → 9 (8 paid + ScioSee free). LIVE store.html (coming-soon) UPDATED to 9-plugin roster (chips + hero + meta) this session — staged, deploys with Jul 5 batch. STILL TODO: archived store-launch.html (full store, not live) still shows 4 plugins/sections — rebuild to 9 if/when scionaugh.com full store is un-archived (buy CTAs already route to sciosound.com).
 - Replace placeholder waitlist forms with links to sciosound.com when ready to direct traffic there (hold is intentional, not a dependency)
 - Booking form also gained enquiry-type / event-date / location fields (commit 0f924aa). Local commits 4eefe5b + 0f924aa on main (ahead 2). USER must `git push origin main` from their machine — sandbox has no SSH keys/GitHub access. Netlify form detection confirmed ENABLED 2026-06-17.
 
