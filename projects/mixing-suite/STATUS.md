@@ -97,9 +97,10 @@ Suite spans eight plugins (ScioSee added as the eighth). The four original plugi
 
 
 
+
 ## Recent Commits
+- 2026-06-20 · 59b10eb · fix(eqp): R2b HF-shelf boost was non-monotonic — replace with Rg||L un-shunt
 - 2026-06-20 · 9944b4f · docs(suite): track 0.3 reference index, handover, licensing + R2/R2b prompts
 - 2026-06-20 · 84cfba5 · feat(eqp): v0.3 Round 2b — ScioEQP bipolar HF shelf (cut → flat → boost, ±12 dB)
 - 2026-06-20 · 5fe7ade · feat(sciosee): v0.3 R4 — Extended view UI prototype on real shared visualizers
 - 2026-06-20 · 851d32f · feat(eqp): v0.3 Round 2 — ScioEQP makeup-amp redesign (tube pairs + J-A output transformer)
-- 2026-06-20 · 92c0468 · refactor(suite): 0.3 Round 1, shared foundation
