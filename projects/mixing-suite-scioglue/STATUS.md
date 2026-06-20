@@ -39,8 +39,9 @@ VST beta v2 created and installed with stochastic noise implementation and UI up
 
 
 
+
 ## Recent Commits
-- 2026-06-20 · 57c2c8e · feat(suite): UI Round 9 — Mix comb-filter DSP fix + remaining Round 8 UI, β3→β4 (§30)
+- 2026-06-20 · 4bee95d · feat(suite): UI Round 9 — Mix comb-filter DSP fix + remaining Round 8 UI + review fixes, β3→β4 (§30)
 - 2026-06-19 · fa3c39a · feat(suite): UI Round 8 — ScioGlue bottom recompose, Tape darken+plate, Tube trace glow, EQP puck, EQ panel (§29)
 - 2026-06-19 · 6093270 · feat(suite): UI Rounds 6 + 7 — shared control plate, recomposes, EQP sliders, blue gonio
 - 2026-06-19 · 10f9490 · feat(suite): UI Round 5 + 5.2 + ScioSee block-mode spectrum rework
