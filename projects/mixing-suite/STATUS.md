@@ -1,6 +1,6 @@
 # Mixing Suite
 
-**Last Updated:** 2026-06-19
+**Last Updated:** 2026-06-20
 **Status:** ACTIVE — next-beta (v0.2.0/β3) unified build COMPLETE on branch `next-beta` (all 11 runner phases + audit, SHIP-READY); UI cohesion + readability pass IMPLEMENTED (2026-06-18); UI Changes Round 2 (§8–§16) IMPLEMENTED + audit PASS (2026-06-18); **UI overhaul ROUND 4 DONE + independent audit PASS (2026-06-18) — all 8 phases (§0–§24 outstanding UI + scope/spectrum perf) built straight through, every item proven effective in the render path; full clean rebuild_install exit 0, auval 18, 18/18 Info.plist, legacy bundles intact; verdict `docs/prompts/ui_round4_audit_report.md`; uncommitted**; **UI Verify & Complete Round 3 DONE (2026-06-18) — §0–§16 audited for render-path effectiveness: all DONE, 2 real gaps FIXED (§9 engraved value readouts via shared drawLabel inset; §7.3 ScioSee now ships in Block mode). Root cause of "doesn't render" = round-2 work was uncommitted/uninstalled, so the loaded DAW build lagged the working tree; all 9 plugins clean-rebuilt + reinstalled (auval lists all, 18/18 Info.plist)**; **DSP features §17 (Dynamic-EQ Ratio/Range/Auto) + §18 (ScioSee Totalyser ms ballistics) DONE 2026-06-18, independent audit PASS** — the two former DSP-pass follow-ups are now closed; pending: pre-ship manual items only
 
 ## Current Focus
@@ -84,9 +84,10 @@ Suite spans eight plugins (ScioSee added as the eighth). The four original plugi
 
 
 
+
 ## Recent Commits
+- 2026-06-20 · 57c2c8e · feat(suite): UI Round 9 — Mix comb-filter DSP fix + remaining Round 8 UI, β3→β4 (§30)
 - 2026-06-19 · fa3c39a · feat(suite): UI Round 8 — ScioGlue bottom recompose, Tape darken+plate, Tube trace glow, EQP puck, EQ panel (§29)
 - 2026-06-19 · 6093270 · feat(suite): UI Rounds 6 + 7 — shared control plate, recomposes, EQP sliders, blue gonio
 - 2026-06-19 · 10f9490 · feat(suite): UI Round 5 + 5.2 + ScioSee block-mode spectrum rework
 - 2026-06-18 · 0fe0313 · feat(suite): next-beta UI cohesion (rounds 1–3) + Dynamic-EQ/Totalyser DSP + ScioSee/ScioClip
-- 2026-06-17 · be15c62 · fix(ui): dark-desaturated ScioGlue red + compact metal knob for EQ/EQP/MB
