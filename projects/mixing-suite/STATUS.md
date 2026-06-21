@@ -1,6 +1,6 @@
 # Mixing Suite
 
-**Last Updated:** 2026-06-20
+**Last Updated:** 2026-06-21
 **Status:** **0.2 PUBLISHED (0.2.0 · β5, commit ce26f9a) — 0.3.0 NOW IN DEVELOPMENT on `develop`.** (2026-06-20). UI Rounds 1–10 all done: Round 9 = suite-wide Mix comb-filter DSP fix (fractional OS latency was truncated to int) + review fixes (ScioSee Scope Fill envelope, spectrum play→stop diagonal, ScioMB add-sat + button) committed 20fc50a; Round 10 = knob sizing/spacing coherence (3 tiers, ScioSpace cell-fill made suite-wide via new Shared/ScionaughLayout.h). β5 bump + close-out doc sync prepared in working tree (commit/push runs on the Mac). NEXT = 0.3.0 major feature+DSP (EQP makeup-amp remake). New branch model in docs/BRANCHING_AND_VERSIONING.md (main=published / develop=active; release tag MUST be beta-N).
 
 ## Current Focus
@@ -104,9 +104,10 @@ Suite spans eight plugins (ScioSee added as the eighth). The four original plugi
 
 
 
+
 ## Recent Commits
+- 2026-06-21 · 010e341 · refactor(shared): extract EQP J-A output transformer into Shared/AnalogModels
 - 2026-06-20 · 155ccb3 · feat(tape): v0.3 Round 5.1 — ScioTape faceplate UI redesign + EQ-control prototype
 - 2026-06-20 · aa7697f · feat(eqp): restore Drive + Dry/Wet to the output row; wider, better-spaced tubes
 - 2026-06-20 · c9f8525 · docs(eq): bring ScioEQ + suite docs current to v0.3 R3 (β7)
 - 2026-06-20 · 008d019 · docs(eqp): bring manual, math, DSP notes + QA checklist up to v0.3 (R2 + R2b)
-- 2026-06-20 · bd636d9 · feat(eq): v0.3 Round 3 — ScioEQ external sidechain + overlay + band-matched dynamics
