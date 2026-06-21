@@ -107,9 +107,10 @@ Suite spans eight plugins (ScioSee added as the eighth). The four original plugi
 
 
 
+
 ## Recent Commits
+- 2026-06-21 · 7fd42b0 · wip(tape): v0.3 Round 5.2 + 5.3 checkpoint — ScioTape voicing IN PROGRESS
 - 2026-06-21 · 25697bf · feat(sciosee): v0.3 R4 — Extended view ported into ScioSee (+ refinements)
 - 2026-06-21 · cd3e7b0 · docs(shared): note the shared output transformer for other agents
 - 2026-06-21 · 010e341 · refactor(shared): extract EQP J-A output transformer into Shared/AnalogModels
 - 2026-06-20 · 155ccb3 · feat(tape): v0.3 Round 5.1 — ScioTape faceplate UI redesign + EQ-control prototype
-- 2026-06-20 · aa7697f · feat(eqp): restore Drive + Dry/Wet to the output row; wider, better-spaced tubes
