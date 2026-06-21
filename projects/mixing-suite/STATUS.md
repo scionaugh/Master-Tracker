@@ -116,9 +116,10 @@ Suite spans eight plugins (ScioSee added as the eighth). The four original plugi
 
 
 
+
 ## Recent Commits
+- 2026-06-21 · df301d6 · feat(sciosee): v0.3 R4 — latch-on-signal, low-end smoothing, crest + loudness-range strip
 - 2026-06-21 · de1904d · docs(tape): v0.3 R5.3 manual + maths for BREAK / head-bump / tapers
 - 2026-06-21 · 9d01144 · feat(sciosee): v0.3 R4 — Extended rolling refresh + latch-on-pause
 - 2026-06-21 · 3ba9fde · feat(tape): v0.3 Round 5.3 — voicing close + golden-null re-baseline
 - 2026-06-21 · 5998a3f · feat(sciosee): Extended polish — sg defaults + scope-window selector to bottom-right
-- 2026-06-21 · aa87109 · wip(tape): v0.3 Round 5.2 + 5.3 checkpoint — ScioTape voicing IN PROGRESS
