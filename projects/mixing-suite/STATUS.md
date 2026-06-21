@@ -118,9 +118,10 @@ Suite spans eight plugins (ScioSee added as the eighth). The four original plugi
 
 
 
+
 ## Recent Commits
+- 2026-06-21 · b1a71c2 · fix(sciosee): LDATA fits all rows — shrink row height instead of clipping CREST/RMS
 - 2026-06-21 · ab022ce · feat(sciosee): v0.3 R4 — reference-match (capture + delta), feature 2/3
 - 2026-06-21 · df301d6 · feat(sciosee): v0.3 R4 — latch-on-signal, low-end smoothing, crest + loudness-range strip
 - 2026-06-21 · de1904d · docs(tape): v0.3 R5.3 manual + maths for BREAK / head-bump / tapers
 - 2026-06-21 · 9d01144 · feat(sciosee): v0.3 R4 — Extended rolling refresh + latch-on-pause
-- 2026-06-21 · 3ba9fde · feat(tape): v0.3 Round 5.3 — voicing close + golden-null re-baseline
