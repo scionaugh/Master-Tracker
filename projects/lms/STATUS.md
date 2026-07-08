@@ -42,9 +42,10 @@ LMS build phases 1–11 complete. sciosound-lms repo connected to Netlify and de
 
 
 
+
 ## Recent Commits
+- 2026-07-08 · fda23ff · docs(studio): README — OpenCode session + offline agent tips
+- 2026-07-08 · 9fd783b · Merge feat/offline-authoring-studio: expanded store, licensing schema, Patreon webhook
 - 2026-07-08 · 9d7baaf · feat(store+licensing): expanded plugin store, licensing schema, Patreon webhook
 - 2026-07-08 · 8224dec · docs(studio): correct Ollama model name devstral-small -> devstral
 - 2026-07-08 · d3ca0d6 · chore(studio): graceful EADDRINUSE message + offline usage README
-- 2026-07-08 · 7a7d02c · feat(studio): offline authoring studio + shared block renderers
-- 2026-06-29 · 1b4f914 · feat(licensing): backfill ownership from user_plugins (beta grants)
