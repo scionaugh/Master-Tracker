@@ -1,6 +1,6 @@
 # Mixing Suite
 
-**Last Updated:** 2026-06-21
+**Last Updated:** 2026-06-22
 **Status:** **0.2 PUBLISHED (0.2.0 · β5, commit ce26f9a) — 0.3.0 NOW IN DEVELOPMENT on `develop`.** (2026-06-20). UI Rounds 1–10 all done: Round 9 = suite-wide Mix comb-filter DSP fix (fractional OS latency was truncated to int) + review fixes (ScioSee Scope Fill envelope, spectrum play→stop diagonal, ScioMB add-sat + button) committed 20fc50a; Round 10 = knob sizing/spacing coherence (3 tiers, ScioSpace cell-fill made suite-wide via new Shared/ScionaughLayout.h). β5 bump + close-out doc sync prepared in working tree (commit/push runs on the Mac). NEXT = 0.3.0 major feature+DSP (EQP makeup-amp remake). New branch model in docs/BRANCHING_AND_VERSIONING.md (main=published / develop=active; release tag MUST be beta-N).
 
 ## Current Focus
@@ -119,9 +119,11 @@ Suite spans eight plugins (ScioSee added as the eighth). The four original plugi
 
 
 
+
+
 ## Recent Commits
+- 2026-06-22 · 001b412 · r8 mb: snapshot at worktree split — F1 consume side (SignalBus audio-key) + F1 producers (Space/Clip)
+- 2026-06-21 · ff815a3 · feat(shared): v0.3 R6 integrator — shared transient/sustain detector + audio-rate SignalBus spine + warm-up hooks
 - 2026-06-21 · b1a71c2 · fix(sciosee): LDATA fits all rows — shrink row height instead of clipping CREST/RMS
 - 2026-06-21 · ab022ce · feat(sciosee): v0.3 R4 — reference-match (capture + delta), feature 2/3
 - 2026-06-21 · df301d6 · feat(sciosee): v0.3 R4 — latch-on-signal, low-end smoothing, crest + loudness-range strip
-- 2026-06-21 · de1904d · docs(tape): v0.3 R5.3 manual + maths for BREAK / head-bump / tapers
-- 2026-06-21 · 9d01144 · feat(sciosee): v0.3 R4 — Extended rolling refresh + latch-on-pause

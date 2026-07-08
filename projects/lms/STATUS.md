@@ -1,6 +1,6 @@
 # ScioSound LMS (sciosound.com)
 
-**Last Updated:** 2026-06-19
+**Last Updated:** 2026-07-08
 **Status:** ACTIVE — Deployed on Netlify; DNS already on Netlify; Lemon Squeezy APPROVED 2026-06-14. No external blockers left — email records + Phase 14 are the remaining work.
 
 ## Current Focus
@@ -38,9 +38,10 @@ LMS build phases 1–11 complete. sciosound-lms repo connected to Netlify and de
 
 
 
+
 ## Recent Commits
+- 2026-07-08 · 7a7d02c · feat(studio): offline authoring studio + shared block renderers
+- 2026-06-29 · 1b4f914 · feat(licensing): backfill ownership from user_plugins (beta grants)
+- 2026-06-29 · 18ab6a7 · feat(validate): R25 in-plugin license check-in edge function
 - 2026-06-11 · 4861d75 · Fix swapped ScioTape and ScioSpace images
 - 2026-06-11 · c1c7dac · Add plugin screenshots to member store cards
-- 2026-06-11 · a0fd221 · Add plugin screenshot images for store
-- 2026-06-10 · 790eb5d · Update CLAUDE.md and LMS-PLAN.md — session wrap-up (2026-06-10)
-- 2026-06-10 · 065e4c6 · Make store page publicly accessible without auth

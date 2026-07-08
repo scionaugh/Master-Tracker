@@ -1,6 +1,6 @@
 # ScioSpace — Spatialiser
 
-**Last Updated:** 2026-06-20
+**Last Updated:** 2026-06-22
 **Status:** ACTIVE — Beta v2 awaiting testing; convolution rooms (beta v3) IMPLEMENTED on develop (Phase H); host tuning next
 
 ## Current Focus
@@ -41,9 +41,10 @@ VST beta v2 created and installed with stochastic noise implementation and UI up
 
 
 
+
 ## Recent Commits
-- 2026-06-20 · 92c0468 · refactor(suite): 0.3 Round 1, shared foundation
-- 2026-06-20 · a5ba16e · docs(suite): open 0.3.0 development - reconcile Round 1 prompt to beta5/develop base
-- 2026-06-20 · ce26f9a · chore(suite): 0.2 close-out - Round 10 knob coherence + beta5 + branch/version model
-- 2026-06-20 · 20fc50a · feat(suite): UI Round 9 — Mix comb-filter DSP fix + remaining Round 8 UI + review fixes, β3→β4 (§30)
-- 2026-06-19 · fa3c39a · feat(suite): UI Round 8 — ScioGlue bottom recompose, Tape darken+plate, Tube trace glow, EQP puck, EQ panel (§29)
+- 2026-06-22 · 001b412 · r8 mb: snapshot at worktree split — F1 consume side (SignalBus audio-key) + F1 producers (Space/Clip)
+- 2026-06-21 · ff815a3 · feat(shared): v0.3 R6 integrator — shared transient/sustain detector + audio-rate SignalBus spine + warm-up hooks
+- 2026-06-21 · b1a71c2 · fix(sciosee): LDATA fits all rows — shrink row height instead of clipping CREST/RMS
+- 2026-06-21 · ab022ce · feat(sciosee): v0.3 R4 — reference-match (capture + delta), feature 2/3
+- 2026-06-21 · df301d6 · feat(sciosee): v0.3 R4 — latch-on-signal, low-end smoothing, crest + loudness-range strip

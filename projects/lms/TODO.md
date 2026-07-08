@@ -4,6 +4,7 @@
 <!-- Format: - [ ] YYYY-MM-DD — item text -->
 
 ## Open
+- [ ] 2026-06-28 — Create the apps for the LMS (scope TBC: the in-course INTERACTIVE apps/widgets — the deferred Phase 13 'interactive' block type — and/or a standalone ScioSound app to access the LMS. Confirm which before building.)
 - [ ] 2026-06-19 — PRIVATE BETA: after Netlify reset, run supabase/11_user_plugins_roster.sql on live DB; wire real signed-URL downloads on members/plugins.html; set final bundle price (replace TBC in store + LS); add plugin screenshots; builds for ScioClip/ScioSee pending (stay 'Coming Soon'). See repo PRIVATE-BETA-PLAN.md.
 - [ ] NETLIFY CREDITS RESET ~2026-07-05 — production deploys frozen until then; batch all changes and push on/after Jul 5.
 
