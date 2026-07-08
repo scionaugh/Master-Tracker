@@ -39,9 +39,10 @@ LMS build phases 1–11 complete. sciosound-lms repo connected to Netlify and de
 
 
 
+
 ## Recent Commits
+- 2026-07-08 · d3ca0d6 · chore(studio): graceful EADDRINUSE message + offline usage README
 - 2026-07-08 · 7a7d02c · feat(studio): offline authoring studio + shared block renderers
 - 2026-06-29 · 1b4f914 · feat(licensing): backfill ownership from user_plugins (beta grants)
 - 2026-06-29 · 18ab6a7 · feat(validate): R25 in-plugin license check-in edge function
 - 2026-06-11 · 4861d75 · Fix swapped ScioTape and ScioSpace images
-- 2026-06-11 · c1c7dac · Add plugin screenshots to member store cards
